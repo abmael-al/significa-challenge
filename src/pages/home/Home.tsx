@@ -1,67 +1,55 @@
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios';
 
-const BASE_URL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`;
+import { SearchResultScreen } from './SearchResultScreen';
 
-const QUERY_URLS = {
-  SEARCH_MOVIE_BY_TITLE_URL: (query: string) => `${BASE_URL}&type=movie&s=${query}`,
-}
-
-interface Movie {
-    Poster: string;
-    Title: string;
-    Type: string;
-    Year: string;
-    imdbID: string;
-}
+const ENTERTAINMENT_TYPE = 'movie';
 
 const Home = () => {
-    const [value, setValue] = useState('');
-    const [movies, setMovies] = useState<Movie | undefined>(undefined);
     const navigate = useNavigate();
+    const [query, setQuery] = useState('');
+    const [nothingHasBeenRequestedYet, setNothingHasBeenRequestedYet] = useState(true);
 
-    const handleOnChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-        setValue(target.value);
-    }
+    // TODO: handle the moment when the user hasn't searched anything yet. 
+    // TODO: handle cleaning of the event handler.
 
-    const handleOnKeyDown = async (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if(event.key !== 'Enter') return;
 
-        const { data } = await axios.get(QUERY_URLS.SEARCH_MOVIE_BY_TITLE_URL(value));
-
-        setMovies(data.Search[0]);
+        setNothingHasBeenRequestedYet(false);
+        setQuery(event.currentTarget.value);
     }
 
-    const handleOnClick = ({ currentTarget }: React.MouseEvent<HTMLImageElement>) => {
-        const movieId = currentTarget.getAttribute('data-movie-id');
-       
-        navigate(`/movie/${movieId}`);
+    const handleRedirect = ({ target }: React.MouseEvent) => {
+        if(!(target instanceof HTMLElement)) return;
+
+        const entertainmentId = target.getAttribute('data-entertainment-id');
+        const entertainmentType = target.getAttribute('data-entertainment-type');
+
+        if(!entertainmentId || !entertainmentType) return;
+
+        navigate(`/${entertainmentType}/${entertainmentId}`);
     }
 
     return (
         <div>
             <input 
                 type="search"
-                value={value}
                 placeholder='Search movies...'
-                onChange={handleOnChange} 
                 onKeyDown={handleOnKeyDown}
             />
 
             <div>
-                {movies && 
-                    <div>
-                        <img 
-                            data-movie-id={movies.imdbID}
-                            onClick={handleOnClick} 
-                            src={movies.Poster} 
-                        />
-                        <p>Title: {movies.Title}</p>
-                        <p>Type: {movies.Type}</p>
-                        <p>Year: {movies.Year}</p>
-                        <p>Id: {movies.imdbID}</p>
-                    </div>
+                {nothingHasBeenRequestedYet &&
+                    <h1>Nothing has been requested yet...</h1>
+                }
+
+                {!nothingHasBeenRequestedYet &&
+                    <SearchResultScreen 
+                        query={query}
+                        type={ENTERTAINMENT_TYPE}
+                        featureExtensionOnClickEvent={handleRedirect}
+                    />
                 }
             </div>
         </div>
