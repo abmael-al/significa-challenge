@@ -1,32 +1,34 @@
 import { useSearchEntertainmentsByTitle } from "../../hooks/useSearchEntertainmentsByTitle"
-import { EntertainmentType } from "../../proxies/config"
+import { EntertainmentPresentationCard } from "./EntertainmentPresentationCard";
+import { SearchConfig } from "../../proxies/config"
 
-interface SearchResultScreenProps {
-    query: string;
-    type: EntertainmentType;
+type SearchResultScreenProps = SearchConfig & {
+    featureExtensionOnClickEvent({ target }: React.MouseEvent): void;
 }
 
-export const SearchResultScreen = (props: SearchResultScreenProps) => {
+export const SearchResultScreen = ({ 
+    query, 
+    type, 
+    featureExtensionOnClickEvent
+}: SearchResultScreenProps) => {
     const {
         entertainments,
         isNotFound,
-        isError,
         isLoading,
-    } = useSearchEntertainmentsByTitle(props);
+        isError,
+    } = useSearchEntertainmentsByTitle({ query: query, type: type });
 
     return (
-        <main>
+        <main
+            onClick={featureExtensionOnClickEvent}
+        >
             {entertainments &&
-                <div>
-                    <img 
-                        data-movie-id={entertainments[0].imdbID}
-                        src={entertainments[0].Poster}
-                    />
-                    <p>Title: {entertainments[0].Title}</p>
-                    <p>Type: {entertainments[0].Type}</p>
-                    <p>Year: {entertainments[0].Year}</p>
-                    <p>Id: {entertainments[0].imdbID}</p>
-                </div>
+                entertainments.map(entertainment => 
+                    <EntertainmentPresentationCard
+                        key={entertainment.imdbID}
+                        { ...entertainment }
+                    />    
+                )
             }
 
             {isLoading &&
