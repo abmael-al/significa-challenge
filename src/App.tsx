@@ -1,4 +1,4 @@
-import { Home } from './pages/home/Home';
+import { Search } from './pages/search/Search';
 import { Movie } from './pages/movie/Movie'
 import { Routes, Route } from 'react-router-dom'
 import { NotFound } from './pages/NotFound/NotFound'
@@ -15,8 +15,8 @@ function App() {
           {/* TODO: Refactor the roth path (search) so that the last
             search is saved in the url's navigation history.
           . */}
-          <Route path='/' element={<Home />} />
-          
+          <Route path='/' element={<Search />} />
+  
           <Route  path='/movie' >
             <Route path=':id' element={<Movie />} />
           </Route>

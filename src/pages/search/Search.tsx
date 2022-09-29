@@ -5,14 +5,13 @@ import { SearchResultScreen } from './SearchResultScreen';
 
 const ENTERTAINMENT_TYPE = 'movie';
 
-const Home = () => {
+const Search = () => {
     const navigate = useNavigate();
     const [query, setQuery] = useState('');
     const [nothingHasBeenRequestedYet, setNothingHasBeenRequestedYet] = useState(true);
 
     // TODO: handle the moment when the user hasn't searched anything yet. 
     // TODO: handle cleaning of the event handler.
-    // TODO: Change the file's and component's name to "Search".
 
     const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if(event.key !== 'Enter') return;
@@ -57,4 +56,4 @@ const Home = () => {
     )
 } 
 
-export { Home };
+export { Search };
