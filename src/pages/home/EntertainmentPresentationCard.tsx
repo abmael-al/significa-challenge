@@ -14,14 +14,14 @@ export const EntertainmentPresentationCard = ({
             data-entertainment-id={imdbID}
             data-entertainment-type={Type}
         >
-            <div
-                style={{ pointerEvents: 'none', }}
-            >
+            <div style={{ pointerEvents: 'none', }}>
                 <img 
                     src={Poster}
                     alt={Title}
                     loading='lazy'
                 />
+            
+            {/* TODO: Implement the "add to favorites functionality". */}
             </div>
             <div>
                 <h3>{Title}</h3>

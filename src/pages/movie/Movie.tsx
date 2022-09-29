@@ -16,7 +16,6 @@ const Movie = () => {
         isError,
     } = useEntertainmentDetails<MovieDetails>({ id: id as string, type: ENTERTAINMENT_TYPE });
     
-  
     const handleOnBackToSearchScreenClick = () => {
         navigation('/');
     }

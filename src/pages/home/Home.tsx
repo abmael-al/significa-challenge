@@ -12,6 +12,7 @@ const Home = () => {
 
     // TODO: handle the moment when the user hasn't searched anything yet. 
     // TODO: handle cleaning of the event handler.
+    // TODO: Change the file's and component's name to "Search".
 
     const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if(event.key !== 'Enter') return;
