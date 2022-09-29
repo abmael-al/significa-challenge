@@ -1,54 +1,48 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react';
-import axios from "axios";
+import { useEntertainmentDetails } from '../../hooks/useEntertainmentDetails';
 
-const BASE_URL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`;
-
-const QUERY_URLS = {
-    GET_MOVIE_DETAILS_BY_ID: (id: string) => `${BASE_URL}&i=${id}`,
-}
+import { MovieDetails, EntertainmentType } from '../../proxies/config';
+import { MovieDetailsScreen } from './MovieDetailsScreen';
 
 const Movie = () => {
+    const ENTERTAINMENT_TYPE: EntertainmentType = 'movie';
     const { id } = useParams();
-    const [movieDetails, setMovieDetails] = useState(undefined);
     const navigation = useNavigate();
-
-    const getMovieDetails = () => {
-        if (!id) return;        
-
-        axios.get(QUERY_URLS.GET_MOVIE_DETAILS_BY_ID(id))
-        .then(({ data }) => {
-            setMovieDetails(data);
-        });
-    }
-
-    useEffect(() => {
-        getMovieDetails();
-    }, []);
-
-    const handleOnClick = () => {
+    
+    const { 
+        details,
+        isNotFound,
+        isLoading,
+        isError,
+    } = useEntertainmentDetails<MovieDetails>({ id: id as string, type: ENTERTAINMENT_TYPE });
+    
+  
+    const handleOnBackToSearchScreenClick = () => {
         navigation('/');
     }
 
-    console.log(movieDetails);
-
     return (
-            <>
-                <button onClick={handleOnClick}>Back</button>
+        <div>
+            <div>
+                <button onClick={handleOnBackToSearchScreenClick}>Back</button>
+            </div>
 
-                {movieDetails &&
-                    <>
-                        <h1>{movieDetails.Title}</h1>
-                        <img 
-                            src={movieDetails.Poster} 
-                        />
-                    </>
-                }
+            {details &&
+                <MovieDetailsScreen { ...details } />
+            }
                 
-                {!movieDetails &&
-                    <h1>Nothing loaded yet...</h1>
-                }
-            </>
+            {isNotFound &&
+                <h1>Oops! Nothing found...</h1>
+            }
+
+            {isLoading &&
+                <h1>Loading...</h1>
+            }
+
+            {isError &&
+                <h1>Something went wrong...</h1>
+            }
+         </div>
     )
 }
 
