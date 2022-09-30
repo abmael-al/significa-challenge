@@ -6,21 +6,23 @@ import { useEffect, useState } from "react";
 export const useSearchEntertainmentsByTitle = (config: SearchConfig) => {
     const [entertainments, setEntertainments] = useState<EntertainmentPresentation[] | undefined>(undefined);
     const [isNotFound, setIsNotFound] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {
         const clearPreviousSearch = () => {
             setEntertainments(undefined);
             setIsNotFound(false);
-            setIsLoading(true);
             setIsError(false);
         }
 
-        const somethingHasBeenRequestedBefore = entertainments || isNotFound || isError;
+        const somethingWasRequestedBefore = entertainments || isNotFound || isError;
 
-        if(somethingHasBeenRequestedBefore) clearPreviousSearch();
-        
+        if(somethingWasRequestedBefore) clearPreviousSearch();
+        if(config.query === '') return;
+
+        setIsLoading(true);
+
         searchEntertainmentsByTitle(config)
             .then(result => {
                 if(result.Response === 'True') setEntertainments(result.Search);

@@ -16,7 +16,7 @@ function App() {
             search is saved in the url's navigation history.
           . */}
           <Route path='/' element={<Search />} />
-  
+
           <Route  path='/movie' >
             <Route path=':id' element={<Movie />} />
           </Route>
