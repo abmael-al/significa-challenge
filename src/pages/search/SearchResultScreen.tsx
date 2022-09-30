@@ -3,13 +3,13 @@ import { EntertainmentPresentationCard } from "./EntertainmentPresentationCard";
 import { SearchConfig } from "../../proxies/config"
 
 type SearchResultScreenProps = SearchConfig & {
-    featureExtensionOnClickEvent({ target }: React.MouseEvent): void;
+    onRedirectToDetailsClick({ target }: React.MouseEvent): void;
 }
 
 export const SearchResultScreen = ({ 
     query, 
     type, 
-    featureExtensionOnClickEvent
+    onRedirectToDetailsClick
 }: SearchResultScreenProps) => {
     const {
         entertainments,
@@ -18,9 +18,11 @@ export const SearchResultScreen = ({
         isError,
     } = useSearchEntertainmentsByTitle({ query: query, type: type });
 
+    const noRequestWasMadeBefore = !entertainments && query === '';
+
     return (
         <main
-            onClick={featureExtensionOnClickEvent}
+            onClick={onRedirectToDetailsClick}
         >
             {entertainments &&
                 entertainments.map(entertainment => 
@@ -29,6 +31,10 @@ export const SearchResultScreen = ({
                         { ...entertainment }
                     />    
                 )
+            }
+
+            {noRequestWasMadeBefore &&
+                <h1>Nothing has been requested yet...</h1>
             }
 
             {isLoading &&
