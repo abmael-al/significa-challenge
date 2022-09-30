@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { EntertainmentType } from '../../proxies/config';
 import { SearchResultScreen } from './SearchResultScreen';
+import { navigateTo } from '../../App';
 
 const queryParamWasCleanedWhileBrowsing = (queryParam: string | null, localQueryState: string) => {
     return !queryParam && localQueryState !== '';
@@ -35,17 +37,17 @@ const Search = () => {
     const handleOnRedirectToDetailsClick = ({ target }: React.MouseEvent) => {
         if(!(target instanceof HTMLElement)) return;
 
-        const entertainmentId = target.getAttribute('data-entertainment-id');
-        const entertainmentType = target.getAttribute('data-entertainment-type');
+        const id = target.getAttribute('data-entertainment-id');
+        const type = target.getAttribute('data-entertainment-type') as EntertainmentType;
 
-        if(!entertainmentId || !entertainmentType) return;
+        if(!id || !type) return;
 
-        navigate(`/${entertainmentType}/${entertainmentId}`);
+        navigate(navigateTo.entertainmentDetails(id, type));
     }
 
     if(queryParamWasCleanedWhileBrowsing(queryParam, query)) setQuery('');
-    else if(wentBackInTheBrowsingHistory(queryParam, query)) setQuery(queryParam);
-    else if(movedForwardInTheBrowsingHistory(queryParam, query)) setQuery(queryParam);
+    else if(wentBackInTheBrowsingHistory(queryParam, query)) setQuery(queryParam!);
+    else if(movedForwardInTheBrowsingHistory(queryParam, query)) setQuery(queryParam!);
 
     return (
         <div>
@@ -55,13 +57,11 @@ const Search = () => {
                 onKeyDown={handleOnSearchRequest}
             />
 
-            <div>
-                <SearchResultScreen 
-                    query={query}
-                    type={ENTERTAINMENT_TYPE}
-                    onRedirectToDetailsClick={handleOnRedirectToDetailsClick}
-                />
-            </div>
+            <SearchResultScreen 
+                query={query}
+                type={ENTERTAINMENT_TYPE}
+                onRedirectToDetailsClick={handleOnRedirectToDetailsClick}
+            />
         </div>
     )
 } 
