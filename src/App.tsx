@@ -1,7 +1,7 @@
 import { Search } from './pages/search/Search';
 import { Movie } from './pages/movie/Movie'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import { NotFound } from './pages/NotFound/NotFound'
+import { NotFound } from './pages/notfound/NotFound'
 import { Entertainment } from './proxies/config';
 import { useCallback } from 'react';
 
