@@ -2,27 +2,27 @@ import { useSearchEntertainmentsByTitle } from "../../hooks/useSearchEntertainme
 import { EntertainmentPresentationCard } from "./EntertainmentPresentationCard";
 import { SearchConfig } from "../../proxies/config"
 
-type SearchResultScreenProps = SearchConfig & {
-    onRedirectToDetailsClick({ target }: React.MouseEvent): void;
+interface SearchResultScreenProps {
+    searchConfig: SearchConfig;
+    onRedirectRequestToDetails({ target }: React.MouseEvent): void;
 }
 
 export const SearchResultScreen = ({ 
-    query, 
-    type, 
-    onRedirectToDetailsClick
+    searchConfig,
+    onRedirectRequestToDetails
 }: SearchResultScreenProps) => {
     const {
         entertainments,
         isNotFound,
         isLoading,
         isError,
-    } = useSearchEntertainmentsByTitle({ query: query, type: type });
+    } = useSearchEntertainmentsByTitle(searchConfig);
 
-    const noRequestWasMadeBefore = !entertainments && query === '';
+    const noRequestWasMadeBefore = !entertainments && searchConfig.query === '';
 
     return (
         <main
-            onClick={onRedirectToDetailsClick}
+            onClick={onRedirectRequestToDetails}
         >
             {entertainments &&
                 entertainments.map(entertainment => 

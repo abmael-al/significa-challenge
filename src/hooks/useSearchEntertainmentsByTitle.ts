@@ -10,19 +10,18 @@ export const useSearchEntertainmentsByTitle = (config: SearchConfig) => {
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {
+        if(config.query === '') return;
+
+        const somethingWasRequestedBefore = !!entertainments || isNotFound || isError;
         const clearPreviousSearch = () => {
             setEntertainments(undefined);
             setIsNotFound(false);
             setIsError(false);
         }
 
-        const somethingWasRequestedBefore = entertainments || isNotFound || isError;
-
         if(somethingWasRequestedBefore) clearPreviousSearch();
-        if(config.query === '') return;
 
         setIsLoading(true);
-
         searchEntertainmentsByTitle(config)
             .then(result => {
                 if(result.Response === 'True') setEntertainments(result.Search);

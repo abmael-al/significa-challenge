@@ -1,8 +1,9 @@
 import { Search } from './pages/search/Search';
 import { Movie } from './pages/movie/Movie'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import { NotFound } from './pages/NotFound/NotFound'
 import { EntertainmentType } from './proxies/config';
+import { useCallback } from 'react';
 
 /* TODO [GLOBAL]: Persist the entertaiments added to favorites. */
 /* TODO [GLOBAL]: Create the header component. */
@@ -16,10 +17,27 @@ export const navigateTo = {
 }
 
 function App() {
+  const navigate = useNavigate();
+  
+  const handleOnRedirectRequestToDetails = useCallback(({ target }: React.MouseEvent) => {
+    if(!(target instanceof HTMLElement)) return;
+
+    const id = target.getAttribute('data-entertainment-id');
+    const type = target.getAttribute('data-entertainment-type') as EntertainmentType;
+
+    if(!id || !type) return;
+
+    navigate(navigateTo.entertainmentDetails(id, type));
+  }, [navigate]);
+
   return (
     <>
       <Routes>
-          <Route path='/' element={<Search />} />
+          <Route path='/' element={
+            <Search 
+              onRedirectRequestToDetails={handleOnRedirectRequestToDetails} 
+            />
+          }/>
 
           <Route  path='/movie' >
             <Route path=':id' element={<Movie />} />
