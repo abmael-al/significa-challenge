@@ -2,7 +2,7 @@ import { Search } from './pages/search/Search';
 import { Movie } from './pages/movie/Movie'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { NotFound } from './pages/NotFound/NotFound'
-import { EntertainmentType } from './proxies/config';
+import { Entertainment } from './proxies/config';
 import { useCallback } from 'react';
 
 /* TODO [GLOBAL]: Persist the entertaiments added to favorites. */
@@ -13,7 +13,7 @@ export const ROUTE_PATHS = {
 }
 
 export const navigateTo = {
-  entertainmentDetails: (id: string, type: EntertainmentType) => `${ROUTE_PATHS[type as 'movie']}`.replace(':id', id),
+  entertainmentDetails: (id: string, type: Entertainment) => `${ROUTE_PATHS[type as 'movie']}`.replace(':id', id),
 }
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
     if(!(target instanceof HTMLElement)) return;
 
     const id = target.getAttribute('data-entertainment-id');
-    const type = target.getAttribute('data-entertainment-type') as EntertainmentType;
+    const type = target.getAttribute('data-entertainment-type') as Entertainment;
 
     if(!id || !type) return;
 

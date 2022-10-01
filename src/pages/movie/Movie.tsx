@@ -1,11 +1,11 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEntertainmentDetails } from '../../hooks/useEntertainmentDetails';
 
-import { MovieDetails, EntertainmentType } from '../../proxies/config';
+import { MovieDetails, Entertainment } from '../../proxies/config';
 import { MovieDetailsScreen } from './MovieDetailsScreen';
 
 const Movie = () => {
-    const ENTERTAINMENT_TYPE: EntertainmentType = 'movie';
+    const ENTERTAINMENT_TYPE: Entertainment = 'movie';
     const { id } = useParams();
     const navigation = useNavigate();
     

@@ -1,9 +1,9 @@
-type EntertainmentType = 'movie' | 'series' | 'episode';
+type Entertainment = 'movie' | 'series' | 'episode';
 
 interface EntertainmentPresentation {
     Poster: string;
     Title: string;
-    Type: EntertainmentType;
+    Type: Entertainment;
     Year: string;
     imdbID: string;
 }
@@ -50,12 +50,12 @@ type EntertainmentDetails = MovieDetails | UnsolicitedResponse;
 
 interface DetailsRequestConfig {
     id: string;
-    type: EntertainmentType;
+    type: Entertainment;
 }
 
 interface SearchConfig {
     query: string;
-    type: EntertainmentType;
+    type: Entertainment;
 }
 
 interface SuccessfulSearch {
@@ -75,7 +75,7 @@ const getEntertainmentSearchURL = ({ query, type }: SearchConfig) => `${BASE_URL
 const getEntertainmentDetailsRequestURL = ({ id, type }: DetailsRequestConfig) => `${BASE_URL}&i=${id}&type=${type}`;
 
 export type {
-    EntertainmentType,
+    Entertainment,
     EntertainmentPresentation,
     EntertainmentDetails,
     MovieDetails,

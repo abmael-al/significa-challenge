@@ -1,8 +1,8 @@
 import { useSearchParams } from 'react-router-dom'
 import { SearchResultScreen } from './SearchResultScreen';
-import { EntertainmentType } from '../../proxies/config';
+import { Entertainment } from '../../proxies/config';
 
-const ENTERTAINMENT_TYPE: EntertainmentType = 'movie';
+const ENTERTAINMENT_TYPE: Entertainment = 'movie';
 
 interface SearchProps {
     onRedirectRequestToDetails({ target }: React.MouseEvent): void;
