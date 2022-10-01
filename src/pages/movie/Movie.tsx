@@ -1,47 +1,49 @@
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useEntertainmentDetails } from '../../hooks/useEntertainmentDetails';
 
 import { MovieDetails, Entertainment } from '../../proxies/config';
 import { MovieDetailsScreen } from './MovieDetailsScreen';
 
-const Movie = () => {
+interface MovieProps {
+    onBackToSearchScreen(): void;
+}
+
+const Movie = ({ onBackToSearchScreen }: MovieProps) => {
     const ENTERTAINMENT_TYPE: Entertainment = 'movie';
     const { id } = useParams();
-    const navigation = useNavigate();
-    
     const { 
         details,
         isNotFound,
         isLoading,
         isError,
-    } = useEntertainmentDetails<MovieDetails>({ id: id as string, type: ENTERTAINMENT_TYPE });
+    } = useEntertainmentDetails<MovieDetails>(
+        { id: id as string, type: ENTERTAINMENT_TYPE }
+    );
     
-    const handleOnBackToSearchScreenClick = () => {
-        navigation('/');
-    }
-
     return (
-        <div>
-            <div>
-                <button onClick={handleOnBackToSearchScreenClick}>Back</button>
-            </div>
+        <>
+            <section>
+                <div>
+                    <button onClick={onBackToSearchScreen}>Back</button>
+                </div>
 
-            {details &&
-                <MovieDetailsScreen { ...details } />
-            }
-                
-            {isNotFound &&
-                <h1>Oops! Nothing found...</h1>
-            }
+                {details &&
+                    <MovieDetailsScreen { ...details } />
+                }
 
-            {isLoading &&
-                <h1>Loading...</h1>
-            }
+                {isNotFound &&
+                    <h1>Oops! Nothing found...</h1>
+                }
 
-            {isError &&
-                <h1>Something went wrong...</h1>
-            }
-         </div>
+                {isLoading &&
+                    <h1>Loading...</h1>
+                }
+
+                {isError &&
+                    <h1>Something went wrong...</h1>
+                }
+            </section>
+        </>
     )
 }
 

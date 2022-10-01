@@ -19,16 +19,20 @@ export const navigateTo = {
 function App() {
   const navigate = useNavigate();
   
-  const handleOnRedirectRequestToDetails = useCallback(({ target }: React.MouseEvent) => {
-    if(!(target instanceof HTMLElement)) return;
+  const handleOnRedirectRequestToDetails = useCallback(
+    ({ target }: React.MouseEvent) => {
+      if(!(target instanceof HTMLElement)) return;
 
-    const id = target.getAttribute('data-entertainment-id');
-    const type = target.getAttribute('data-entertainment-type') as Entertainment;
+      const id = target.getAttribute('data-entertainment-id');
+      const type = target.getAttribute('data-entertainment-type') as Entertainment;
 
-    if(!id || !type) return;
+      if(!id || !type) return;
 
-    navigate(navigateTo.entertainmentDetails(id, type));
-  }, [navigate]);
+      navigate(navigateTo.entertainmentDetails(id, type));
+    }, [navigate]
+  );
+
+  const handleOnBackToSearchScreen = useCallback(() => navigate('/'), [navigate]);
 
   return (
     <>
@@ -39,8 +43,12 @@ function App() {
             />
           }/>
 
-          <Route  path='/movie' >
-            <Route path=':id' element={<Movie />} />
+          <Route  path='/movie'>
+            <Route path=':id' element={
+              <Movie 
+                onBackToSearchScreen={handleOnBackToSearchScreen} 
+              />
+            }/>
           </Route>
           
           <Route path='*' element={<NotFound />} />
