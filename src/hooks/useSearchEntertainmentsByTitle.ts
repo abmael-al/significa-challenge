@@ -10,8 +10,6 @@ export const useSearchEntertainmentsByTitle = (config: SearchConfig) => {
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {
-        if(config.query === '') return;
-
         const somethingWasRequestedBefore = !!entertainments || isNotFound || isError;
         const clearPreviousSearch = () => {
             setEntertainments(undefined);
@@ -20,6 +18,7 @@ export const useSearchEntertainmentsByTitle = (config: SearchConfig) => {
         }
 
         if(somethingWasRequestedBefore) clearPreviousSearch();
+        if(config.query === '') return;
 
         setIsLoading(true);
         searchEntertainmentsByTitle(config)
