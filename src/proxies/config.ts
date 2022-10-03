@@ -1,6 +1,6 @@
-type Entertainment = 'movie' | 'series' | 'episode';
+export type Entertainment = 'movie' | 'series' | 'episode';
 
-interface EntertainmentPresentation {
+export interface EntertainmentPresentation {
     Poster: string;
     Title: string;
     Type: Entertainment;
@@ -34,7 +34,7 @@ interface BasicEntertainmentDetails extends EntertainmentPresentation {
     imdbVotes: string;
 }
 
-interface MovieDetails extends BasicEntertainmentDetails {
+export interface MovieDetails extends BasicEntertainmentDetails {
     Type: 'movie';
     BoxOffice: string;
     DVD: string;
@@ -46,14 +46,14 @@ interface UnsolicitedResponse {
     Response: 'False';
 }
 
-type EntertainmentDetails = MovieDetails | UnsolicitedResponse;
+export type EntertainmentDetails = MovieDetails | UnsolicitedResponse;
 
-interface DetailsRequestConfig {
+export interface DetailsRequestConfig {
     id: string;
     type: Entertainment;
 }
 
-interface SearchConfig {
+export interface SearchConfig {
     query: string;
     type: Entertainment;
 }
@@ -66,25 +66,10 @@ interface SuccessfulSearch {
 
 type UnsuccessfulSearch = UnsolicitedResponse;
 
-type SearchResult = SuccessfulSearch | UnsuccessfulSearch;
+export type SearchResult = SuccessfulSearch | UnsuccessfulSearch;
 
 const BASE_URL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`;
 
-const getEntertainmentSearchURL = ({ query, type }: SearchConfig) => `${BASE_URL}&s=${query}&type=${type}`;
+export const getEntertainmentSearchRequestUrl = ({ query, type }: SearchConfig) => `${BASE_URL}&s=${query}&type=${type}`;
 
-const getEntertainmentDetailsRequestURL = ({ id, type }: DetailsRequestConfig) => `${BASE_URL}&i=${id}&type=${type}`;
-
-export type {
-    Entertainment,
-    EntertainmentPresentation,
-    EntertainmentDetails,
-    MovieDetails,
-    DetailsRequestConfig,
-    SearchConfig,
-    SearchResult
-}
-
-export {
-    getEntertainmentSearchURL,
-    getEntertainmentDetailsRequestURL,
-}
+export const getEntertainmentDetailsRequestUrl = ({ id, type }: DetailsRequestConfig) => `${BASE_URL}&i=${id}&type=${type}`;

@@ -3,14 +3,12 @@ import fetch from '../lib/fetch'
 import { 
     SearchConfig,
     SearchResult,
-    getEntertainmentSearchURL,
+    getEntertainmentSearchRequestUrl,
 } from './config';
 
-const searchEntertainmentsByTitle = async (config: SearchConfig) => {
-    const url = getEntertainmentSearchURL(config);
+export const searchEntertainmentsByTitle = async (config: SearchConfig) => {
+    const url = getEntertainmentSearchRequestUrl(config);
     const { data } = await fetch<SearchResult>(url); 
 
     return data;
 }
-
-export { searchEntertainmentsByTitle };

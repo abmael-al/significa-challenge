@@ -16,7 +16,7 @@ export const navigateTo = {
   entertainmentDetails: (id: string, type: Entertainment) => `${ROUTE_PATHS[type as 'movie']}`.replace(':id', id),
 }
 
-function App() {
+export function App() {
   const navigate = useNavigate();
   
   const handleOnRedirectRequestToDetails = useCallback(
@@ -56,5 +56,3 @@ function App() {
     </>
   )
 }
-
-export default App

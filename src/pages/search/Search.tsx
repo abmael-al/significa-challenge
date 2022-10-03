@@ -8,7 +8,7 @@ interface SearchProps {
     onRedirectRequestToDetails({ target }: React.MouseEvent): void;
 }
 
-const Search = ({ onRedirectRequestToDetails }: SearchProps) => {
+export const Search = ({ onRedirectRequestToDetails }: SearchProps) => {
     const [searchParams, setSearchParams] = useSearchParams();
     const query = searchParams.get('query') || '';
 
@@ -35,5 +35,3 @@ const Search = ({ onRedirectRequestToDetails }: SearchProps) => {
         </div>
     )
 } 
-
-export { Search };

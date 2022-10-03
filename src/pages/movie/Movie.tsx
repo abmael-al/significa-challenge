@@ -8,7 +8,7 @@ interface MovieProps {
     onBackToSearchScreen(): void;
 }
 
-const Movie = ({ onBackToSearchScreen }: MovieProps) => {
+export const Movie = ({ onBackToSearchScreen }: MovieProps) => {
     const ENTERTAINMENT_TYPE: Entertainment = 'movie';
     const { id } = useParams();
     const { 
@@ -46,5 +46,3 @@ const Movie = ({ onBackToSearchScreen }: MovieProps) => {
         </>
     )
 }
-
-export { Movie };
