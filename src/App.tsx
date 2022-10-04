@@ -8,6 +8,8 @@ import { useCallback } from 'react';
 /* TODO [GLOBAL]: Persist the entertaiments added to favorites. */
 /* TODO [GLOBAL]: Create the header component. */
 
+export const ENTERTAINMENT_BOOKMARK_KEY = 'ent_bookmark'; 
+
 export const ROUTE_PATHS = {
   movie: '/movie/:id'
 }
@@ -29,7 +31,8 @@ export function App() {
       if(!id || !type) return;
 
       navigate(navigateTo.entertainmentDetails(id, type));
-    }, [navigate]
+    }, 
+    [navigate]
   );
 
   const handleOnBackToSearchScreen = useCallback(() => navigate('/'), [navigate]);

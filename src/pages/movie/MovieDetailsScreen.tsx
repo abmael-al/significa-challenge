@@ -1,68 +1,35 @@
-import { useState } from 'react';
 import { MovieDetails } from '../../proxies/config'
+import { useBookmark } from '../../hooks/index'
+import { ENTERTAINMENT_BOOKMARK_KEY } from '../../App'
 
 type MovieDetailsScreenProps = MovieDetails;
 
-interface AddToFavoritesProps {
-    imdbID: string;
+interface BookmarkToggleProps {
+    id: string;
+    bookmarkKey: string;
+    toggledOn: React.ReactNode;
+    toggledOff: React.ReactNode;
 }
 
-const verify = (imdbID: string) => {
-    let favorites = localStorage.getItem('favorites');
-
-    if(!favorites) {
-        localStorage.setItem('favorites', JSON.stringify([]));
-    }
-
-    favorites = JSON.parse(localStorage.getItem('favorites')!);
-        
-    const set = new Set(favorites!);
-
-    if(set.has(imdbID)) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-const AddToFavorites = ({ imdbID }: AddToFavoritesProps) => {
-    const [isFavorited, setIsFavorited] = useState(verify(imdbID));
-
-    // Get the favorites.
-    // Verify if imdbID exits in the favorites.
-    // Toggle enterteinment from favorites.
-    // Update the favorites.
-
-    const toggle = () => {
-        let favorites = localStorage.getItem('favorites');
-
-        favorites = JSON.parse(localStorage.getItem('favorites')!);
-        
-        const set = new Set(favorites!);
-
-        if(set.has(imdbID)) {
-            set.delete(imdbID);
-        }
-        else {
-            set.add(imdbID);
-        }
-
-        localStorage.setItem('favorites', JSON.stringify(Array.from(set)));
-    }
-
+const BookmarkToggle = ({ 
+    id, 
+    bookmarkKey,
+    toggledOn = 'Added to bookmark',
+    toggledOff = 'Add to bookmark',
+}: BookmarkToggleProps) => {
+    const bookmark = useBookmark(bookmarkKey);
+ 
     const onToggle = () => {
-        setIsFavorited(!isFavorited);
-        toggle();
+        bookmark.toggle(id);
     }
 
     return( 
         <button 
             onClick={onToggle}
         >
-            {isFavorited
-                ? 'Added'
-                : 'Add to favorites'
+            {bookmark.includes(id)
+                ? toggledOn
+                : toggledOff
             }
         </button>
     )
@@ -97,8 +64,12 @@ export const MovieDetailsScreen = ({
                     <p>IMDB rating: {imdbRating}/10</p>
                     <p>Metascore: {Metascore}%</p>
 
-                    {/* TODO: Implement "add to favorites" functionality. */}
-                    <AddToFavorites imdbID={imdbID} />
+                    <BookmarkToggle 
+                        id={imdbID}
+                        bookmarkKey={ENTERTAINMENT_BOOKMARK_KEY}
+                        toggledOn={'Added'}
+                        toggledOff={'Add to favorites'}
+                    />
                 </div>
                 
                 <div>
