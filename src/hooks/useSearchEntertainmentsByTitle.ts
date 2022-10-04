@@ -1,5 +1,8 @@
-import { EntertainmentPresentation, SearchConfig } from "../proxies/config";
-import { searchEntertainmentsByTitle } from "../proxies/searchEntertainmentsByTitle";
+import { 
+    EntertainmentPresentation, 
+    SearchConfig,
+    searchEntertainmentsByTitle 
+} from "../proxies";
 
 import { useEffect, useState } from "react";
 

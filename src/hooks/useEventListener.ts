@@ -1,6 +1,6 @@
 import { useEffect, useRef, RefObject } from 'react';
  
-import { useIsomorphicLayoutEffect } from './index';
+import { useIsomorphicLayoutEffect } from './';
 
 // Window Event based useEventListener interface
 function useEventListener<K extends keyof WindowEventMap> (

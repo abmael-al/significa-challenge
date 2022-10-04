@@ -2,7 +2,7 @@ import {
     DetailsRequestConfig,
     EntertainmentDetails,
     getEntertainmentDetailsRequestUrl 
-} from "./config";
+} from "./";
 
 import fetch from "../lib/fetch";
 

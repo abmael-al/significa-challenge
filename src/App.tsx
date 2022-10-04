@@ -1,9 +1,8 @@
-import { Search } from './pages/search/Search';
-import { Movie } from './pages/movie/Movie'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import { NotFound } from './pages/notfound/NotFound'
-import { Entertainment } from './proxies/config';
 import { useCallback } from 'react';
+
+import { Search, Movie, NotFound } from './pages';
+import { Entertainment } from './proxies';
 
 /* TODO [GLOBAL]: Persist the entertaiments added to favorites. */
 /* TODO [GLOBAL]: Create the header component. */

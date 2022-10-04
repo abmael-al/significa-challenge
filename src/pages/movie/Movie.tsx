@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
-import { useEntertainmentDetails } from '../../hooks/useEntertainmentDetails';
+import { useEntertainmentDetails } from '../../hooks';
 
-import { MovieDetails, Entertainment } from '../../proxies/config';
+import { MovieDetails, Entertainment } from '../../proxies';
 import { MovieDetailsScreen } from './MovieDetailsScreen';
 
 interface MovieProps {

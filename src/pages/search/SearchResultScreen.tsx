@@ -1,6 +1,6 @@
-import { useSearchEntertainmentsByTitle } from "../../hooks/useSearchEntertainmentsByTitle"
+import { useSearchEntertainmentsByTitle } from "../../hooks"
 import { EntertainmentPresentationCard } from "./EntertainmentPresentationCard";
-import { SearchConfig } from "../../proxies/config"
+import { SearchConfig } from "../../proxies"
 
 interface SearchResultScreenProps {
     searchConfig: SearchConfig;

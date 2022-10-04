@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
-import { DetailsRequestConfig, EntertainmentDetails } from "../proxies/config"
-import { getEntertainmentDetails } from "../proxies/getEntertainmentDetails"
+import { 
+    DetailsRequestConfig, 
+    EntertainmentDetails,
+    getEntertainmentDetails 
+} from "../proxies"
 
 export const useEntertainmentDetails = <T extends EntertainmentDetails>(config: DetailsRequestConfig) => {
     const [details, setDetails] = useState<T | undefined>(undefined);

@@ -1,4 +1,4 @@
-import { EntertainmentPresentation } from "../../proxies/config"
+import { EntertainmentPresentation } from "../../proxies"
 
 type EntertainmentPresentationCardProps = EntertainmentPresentation;
 

@@ -4,7 +4,7 @@ import {
     SearchConfig,
     SearchResult,
     getEntertainmentSearchRequestUrl,
-} from './config';
+} from './';
 
 export const searchEntertainmentsByTitle = async (config: SearchConfig) => {
     const url = getEntertainmentSearchRequestUrl(config);

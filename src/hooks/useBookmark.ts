@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useLocalStorage } from "./index";
+import { useLocalStorage } from "./";
 
 export function useBookmark(key: string) {
     const [bookmark, setBookmark] = useLocalStorage<string[]>(key, []);

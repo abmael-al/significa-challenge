@@ -6,7 +6,7 @@ import {
     useState
 } from 'react'
 
-import { useEventCallback, useEventListener } from './index'
+import { useEventCallback, useEventListener } from './'
 
 declare global {
     interface WindowEventMap {

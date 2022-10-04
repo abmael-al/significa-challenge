@@ -1,6 +1,6 @@
-import { MovieDetails } from '../../proxies/config'
+import { ENTERTAINMENT_BOOKMARK_KEY } from '../../App';
 import { BookmarkToggle } from '../../components';
-import { ENTERTAINMENT_BOOKMARK_KEY } from '../../App'
+import { MovieDetails } from '../../proxies';
 
 type MovieDetailsScreenProps = MovieDetails;
 

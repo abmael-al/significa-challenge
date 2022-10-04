@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom'
 import { SearchResultScreen } from './SearchResultScreen';
-import { Entertainment } from '../../proxies/config';
+import { Entertainment } from '../../proxies';
 
 const ENTERTAINMENT_TYPE: Entertainment = 'movie';
 
