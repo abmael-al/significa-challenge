@@ -1,31 +1,31 @@
 import { useBookmark } from '../../hooks';
 
 interface BookmarkToggleProps {
-    id: string;
     bookmarkKey: string;
-    toggledOn: React.ReactNode;
-    toggledOff: React.ReactNode;
+    itemId: string;
+    toggledOnRender: React.ReactNode;
+    toggledOffRender: React.ReactNode;
 }
 
 export const BookmarkToggle = ({ 
-    id, 
     bookmarkKey,
-    toggledOn = 'Added to bookmark',
-    toggledOff = 'Add to bookmark',
+    itemId, 
+    toggledOnRender = 'Added to bookmark',
+    toggledOffRender = 'Add to bookmark',
 }: BookmarkToggleProps) => {
     const bookmark = useBookmark(bookmarkKey);
  
-    const onToggle = () => {
-        bookmark.toggle(id);
+    const handleOnToggle = () => {
+        bookmark.toggle(itemId);
     }
 
     return( 
         <button 
-            onClick={onToggle}
+            onClick={handleOnToggle}
         >
-            {bookmark.includes(id)
-                ? toggledOn
-                : toggledOff
+            {bookmark.includes(itemId)
+                ? toggledOnRender
+                : toggledOffRender
             }
         </button>
     )

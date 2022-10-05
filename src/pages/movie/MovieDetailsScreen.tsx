@@ -34,10 +34,10 @@ export const MovieDetailsScreen = ({
                     <p>Metascore: {Metascore}%</p>
 
                     <BookmarkToggle 
-                        id={imdbID}
                         bookmarkKey={ENTERTAINMENT_BOOKMARK_KEY}
-                        toggledOn={'Added'}
-                        toggledOff={'Add to favorites'}
+                        itemId={imdbID}
+                        toggledOnRender='Added'
+                        toggledOffRender='Add to favorites'
                     />
                 </div>
                 
@@ -48,6 +48,7 @@ export const MovieDetailsScreen = ({
                     <p>Director: {Director}</p>
                 </div>
             </div>
+            
             <div>
                 <img 
                     src={Poster} 
