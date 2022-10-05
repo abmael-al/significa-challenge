@@ -1,6 +1,8 @@
-import { EntertainmentPresentation } from "../../proxies"
+import { EntertainmentPresentation } from "../../proxies";
 
-type EntertainmentPresentationCardProps = EntertainmentPresentation;
+type EntertainmentPresentationCardProps = EntertainmentPresentation & {
+    isBookmarked: boolean;
+};
 
 export const EntertainmentPresentationCard = ({
     Poster,
@@ -8,6 +10,7 @@ export const EntertainmentPresentationCard = ({
     Year,
     Type,
     imdbID,
+    isBookmarked,
 }: EntertainmentPresentationCardProps) => {
     return (
         <div 
@@ -20,9 +23,17 @@ export const EntertainmentPresentationCard = ({
                     alt={Title}
                     loading='lazy'
                 />
-            
-            {/* TODO: Implement the "add to favorites functionality". */}
             </div>
+
+            <button
+                data-bookmark-id={imdbID}
+            >
+                {isBookmarked
+                    ? 'Added'
+                    : 'Add to favorites'
+                }
+            </button>
+
             <div>
                 <h3>{Title}</h3>
                 <p>{Year}</p>

@@ -1,6 +1,7 @@
-import { useSearchEntertainmentsByTitle } from "../../hooks"
+import { useSearchEntertainmentsByTitle, useBookmark } from "../../hooks"
 import { EntertainmentPresentationCard } from "./EntertainmentPresentationCard";
 import { SearchConfig } from "../../proxies"
+import { ENTERTAINMENT_BOOKMARK_KEY } from '../../App'
 
 interface SearchResultScreenProps {
     searchConfig: SearchConfig;
@@ -9,14 +10,26 @@ interface SearchResultScreenProps {
 
 export const SearchResultScreen = ({ 
     searchConfig,
-    onRedirectRequestToDetails
+    onRedirectRequestToDetails,
 }: SearchResultScreenProps) => {
-    const {
+    const { 
         entertainments,
         isNotFound,
         isLoading,
         isError,
     } = useSearchEntertainmentsByTitle(searchConfig);
+    
+    const bookmark = useBookmark(ENTERTAINMENT_BOOKMARK_KEY);
+
+    const handleOnToggleInBookmark = ({ target }: React.MouseEvent) => {
+        if(!(target instanceof HTMLElement)) return;
+
+        const id = target.getAttribute('data-bookmark-id');
+
+        if(!id) return;
+
+        bookmark.toggle(id);
+    }
 
     const noRequestWasMadeBefore = !entertainments && searchConfig.query === '';
 
@@ -24,30 +37,35 @@ export const SearchResultScreen = ({
         <main
             onClick={onRedirectRequestToDetails}
         >
-            {entertainments &&
-                entertainments.map(entertainment => 
-                    <EntertainmentPresentationCard
-                        key={entertainment.imdbID}
-                        { ...entertainment }
-                    />    
-                )
-            }
+            <div
+                onClick={handleOnToggleInBookmark}
+            >
+                {entertainments &&
+                    entertainments.map(ent => 
+                        <EntertainmentPresentationCard
+                            key={ent.imdbID}
+                            isBookmarked={bookmark.includes(ent.imdbID)}
+                            { ...ent }
+                        />    
+                    )
+                }
 
-            {noRequestWasMadeBefore &&
-                <h1>Nothing has been requested yet...</h1>
-            }
+                {noRequestWasMadeBefore &&
+                    <h1>Nothing has been requested yet...</h1>
+                }
 
-            {isLoading &&
-                <h1>Loading...</h1>
-            }
+                {isLoading &&
+                    <h1>Loading...</h1>
+                }
 
-            {isNotFound &&
-                <h1>Nothing found...</h1>
-            }
+                {isNotFound &&
+                    <h1>Nothing found...</h1>
+                }
 
-            {isError &&
-                <h1>Some error ocurred...</h1>
-            }   
+                {isError &&
+                    <h1>Some error ocurred...</h1>
+                }   
+            </div>
         </main>
     )
 }

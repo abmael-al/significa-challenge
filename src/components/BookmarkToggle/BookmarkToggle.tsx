@@ -19,7 +19,9 @@ export const BookmarkToggle = ({
         bookmark.toggle(itemId);
     }
 
-    return( 
+    console.log('Here');
+
+    return(
         <button 
             onClick={handleOnToggle}
         >
