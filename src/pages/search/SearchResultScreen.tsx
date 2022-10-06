@@ -1,7 +1,6 @@
-import { useSearchEntertainmentsByTitle, useBookmark } from "../../hooks"
-import { EntertainmentPresentationCard } from "./EntertainmentPresentationCard";
+import { useSearchEntertainmentsByTitle } from "../../hooks"
 import { SearchConfig } from "../../proxies"
-import { ENTERTAINMENT_BOOKMARK_KEY } from '../../App'
+import { EntertainmentCardFeatures } from "./EntertainmentCardFeatures";
 
 interface SearchResultScreenProps {
     searchConfig: SearchConfig;
@@ -19,35 +18,17 @@ export const SearchResultScreen = ({
         isError,
     } = useSearchEntertainmentsByTitle(searchConfig);
     
-    const bookmark = useBookmark(ENTERTAINMENT_BOOKMARK_KEY);
-
-    const handleOnToggleInBookmark = ({ target }: React.MouseEvent) => {
-        if(!(target instanceof HTMLElement)) return;
-
-        const id = target.getAttribute('data-bookmark-id');
-
-        if(!id) return;
-
-        bookmark.toggle(id);
-    }
-
     const noRequestWasMadeBefore = !entertainments && searchConfig.query === '';
 
     return (
         <main
             onClick={onRedirectRequestToDetails}
         >
-            <div
-                onClick={handleOnToggleInBookmark}
-            >
+            <div>
                 {entertainments &&
-                    entertainments.map(ent => 
-                        <EntertainmentPresentationCard
-                            key={ent.imdbID}
-                            isBookmarked={bookmark.includes(ent.imdbID)}
-                            { ...ent }
-                        />    
-                    )
+                    <EntertainmentCardFeatures 
+                        content={entertainments}
+                    />
                 }
 
                 {noRequestWasMadeBefore &&
