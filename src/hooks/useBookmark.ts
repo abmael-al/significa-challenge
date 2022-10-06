@@ -1,22 +1,26 @@
 import { useLocalStorage } from "./";
+import { useRef } from "react";
 
 export function useBookmark(key: string) {
-    const [bookmark, setBookmark] = useLocalStorage<string[]>(key, []);
-    const optBookmark = new Set(bookmark);
+    const [bookmarkItems, setBookmarkItems] = useLocalStorage<string[]>(key, []);
+    const bookmark = new Set(bookmarkItems);
+    const features = useRef(
+        {
+            toggle(id: string) {
+                if(bookmark.has(id)) {
+                    bookmark.delete(id)
+                } else {
+                    bookmark.add(id);
+                }
 
-    return {
-        toggle(id: string) {
-            if(optBookmark.has(id)) {
-                optBookmark.delete(id);
-            } else {
-                optBookmark.add(id);
-            }
-    
-            setBookmark(Array.from(optBookmark));
-        },
-    
-        includes(id: string) {
-            return optBookmark.has(id);
+                setBookmarkItems(Array.from(bookmark));
+            },
+        
+            includes(id: string) {
+                return bookmark.has(id);
+            },
         }
-    };
+    );
+
+    return features.current;
 }
