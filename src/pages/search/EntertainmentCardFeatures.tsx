@@ -1,7 +1,7 @@
 import { useBookmark } from "../../hooks"
 import { ENTERTAINMENT_BOOKMARK_KEY } from '../../App'
 import { EntertainmentPresentation } from "../../proxies"
-import { EntertainmentPresentationCard } from "./EntertainmentPresentationCard";
+import { EntertainmentCard } from "./EntertainmentCard";
 
 interface EntertainmentCardFeaturesProps {
     content: EntertainmentPresentation[];
@@ -25,7 +25,7 @@ export const EntertainmentCardFeatures = ({ content }: EntertainmentCardFeatures
             onClick={handleOnToggleInBookmark}
         >
             {content.map(ent => 
-                <EntertainmentPresentationCard
+                <EntertainmentCard
                     key={ent.imdbID}
                     isBookmarked={bookmark.includes(ent.imdbID)}
                     { ...ent }

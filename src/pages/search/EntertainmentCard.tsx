@@ -1,17 +1,17 @@
 import { EntertainmentPresentation } from "../../proxies";
 
-type EntertainmentPresentationCardProps = EntertainmentPresentation & {
+type EntertainmentCardProps = EntertainmentPresentation & {
     isBookmarked: boolean;
 };
 
-export const EntertainmentPresentationCard = ({
+export const EntertainmentCard = ({
     Poster,
     Title,
     Year,
     Type,
     imdbID,
     isBookmarked,
-}: EntertainmentPresentationCardProps) => {
+}: EntertainmentCardProps) => {
     return (
         <div 
             data-entertainment-id={imdbID}
