@@ -5,10 +5,10 @@ import { MovieDetails, Entertainment } from '../../proxies';
 import { MovieDetailsScreen } from './MovieDetailsScreen';
 
 interface MovieProps {
-    onBackToSearchScreen(): void;
+    handleOnBackToSearchScreen(): void;
 }
 
-export const Movie = ({ onBackToSearchScreen }: MovieProps) => {
+export const Movie = ({ handleOnBackToSearchScreen }: MovieProps) => {
     const ENTERTAINMENT_TYPE: Entertainment = 'movie';
     const { id } = useParams();
     const { 
@@ -24,7 +24,7 @@ export const Movie = ({ onBackToSearchScreen }: MovieProps) => {
         <>
             <section>
                 <div>
-                    <button onClick={onBackToSearchScreen}>Back</button>
+                    <button onClick={handleOnBackToSearchScreen}>Back</button>
                 </div>
 
                 {details &&

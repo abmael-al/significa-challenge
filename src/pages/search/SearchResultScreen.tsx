@@ -4,12 +4,12 @@ import { EntertainmentCardFeatures } from "./EntertainmentCardFeatures";
 
 interface SearchResultScreenProps {
     searchConfig: SearchConfig;
-    onRedirectRequestToDetails({ target }: React.MouseEvent): void;
+    handleOnRedirectToDetails({ target }: React.MouseEvent): void;
 }
 
 export const SearchResultScreen = ({ 
     searchConfig,
-    onRedirectRequestToDetails,
+    handleOnRedirectToDetails,
 }: SearchResultScreenProps) => {
     const { 
         entertainments,
@@ -21,8 +21,8 @@ export const SearchResultScreen = ({
     const noRequestWasMadeBefore = !entertainments && searchConfig.query === '';
 
     return (
-        <main
-            onClick={onRedirectRequestToDetails}
+        <main 
+            onClick={handleOnRedirectToDetails}
         >
             <div>
                 {entertainments &&

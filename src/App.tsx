@@ -20,7 +20,7 @@ export const navigateTo = {
 export function App() {
   const navigate = useNavigate();
   
-  const handleOnRedirectRequestToDetails = useCallback(
+  const handleOnRedirectToDetails = useCallback(
     ({ target }: React.MouseEvent) => {
       if(!(target instanceof HTMLElement)) return;
 
@@ -41,14 +41,14 @@ export function App() {
       <Routes>
           <Route path='/' element={
             <Search 
-              onRedirectRequestToDetails={handleOnRedirectRequestToDetails} 
+              handleOnRedirectToDetails={handleOnRedirectToDetails} 
             />
           }/>
 
           <Route  path='/movie'>
             <Route path=':id' element={
               <Movie 
-                onBackToSearchScreen={handleOnBackToSearchScreen} 
+                handleOnBackToSearchScreen={handleOnBackToSearchScreen} 
               />
             }/>
           </Route>
