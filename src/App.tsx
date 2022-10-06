@@ -2,9 +2,9 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useCallback } from 'react';
 
 import { Search, Movie, NotFound } from './pages';
+import { Header } from './layout';
 import { Entertainment } from './proxies';
 
-/* TODO [GLOBAL]: Persist the entertaiments added to favorites. */
 /* TODO [GLOBAL]: Create the header component. */
 
 export const ENTERTAINMENT_BOOKMARK_KEY = 'ent_bookmark'; 
@@ -39,21 +39,23 @@ export function App() {
   return (
     <>
       <Routes>
-          <Route path='/' element={
-            <Search 
-              handleOnRedirectToDetails={handleOnRedirectToDetails} 
-            />
-          }/>
-
-          <Route  path='/movie'>
-            <Route path=':id' element={
-              <Movie 
-                handleOnBackToSearchScreen={handleOnBackToSearchScreen} 
+          <Route element={<Header />}>
+            <Route path='/' element={
+              <Search 
+                handleOnRedirectToDetails={handleOnRedirectToDetails} 
               />
             }/>
+
+            <Route  path='/movie'>
+              <Route path=':id' element={
+                <Movie 
+                  handleOnBackToSearchScreen={handleOnBackToSearchScreen} 
+                />
+              }/>
+            </Route>
+            
+            <Route path='*' element={<NotFound />} />
           </Route>
-          
-          <Route path='*' element={<NotFound />} />
       </Routes>
     </>
   )
