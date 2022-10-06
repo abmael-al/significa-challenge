@@ -15,7 +15,8 @@
     --clr-accent-200:hsl(0, 100%, 63%);
 
     /* typography */
-    --ff-primary: 'Roboto', sans-serif;
+    --ff-primary-fallback: sans-serif;
+    --ff-primary: 'Roboto', var(--ff-primary-fallback);
 
     --fw-regular: 400;
     --fw-medium: 700;
@@ -38,26 +39,26 @@
     --ff-body: var(--ff-primary);
     --fw-body: var(--fw-regular);
     --fs-body: var(--fs-300);
-    --tk-body: var(--tracking-100);
-    --ld-body: var(--leading-100);
+    --tracking-body: var(--tracking-100);
+    --leading-body: var(--leading-100);
 
     --ff-heading-100: var(--ff-primary);
     --fw-heading-100: var(--fw-medium);
     --fs-heading-100: var(--fs-400);
-    --tk-heading-100: var(--tracking-200);
-    --ld-heading-100: var(--leading-200);
+    --tracking-heading-100: var(--tracking-200);
+    --leading-heading-100: var(--leading-200);
     
     --ff-heading-200: var(--ff-primary);
     --fw-heading-200: var(--fw-medium);
     --fs-heading-200: var(--fs-500);
-    --tk-heading-200: var(--tracking-200);
-    --ld-heading-200: var(--leading-300);
+    --tracking-heading-200: var(--tracking-200);
+    --leading-heading-200: var(--leading-300);
 
     --ff-heading-300: var(--ff-primary);
     --fw-heading-300: var(--fw-bold);
     --fs-heading-300: var(--fs-900);
-    --tk-heading-300: var(--tracking-300);
-    --ld-heading-300: var(--leading-400);
+    --tracking-heading-300: var(--tracking-300);
+    --leading-heading-300: var(--leading-400);
 }
 
 @media (min-width: 64em) {
@@ -145,6 +146,6 @@ body {
     font-family: var(--ff-body);
     font-weight: var(--fw-body);
     font-size: var(--fs-body);
-    letter-spacing: var(--tk-body);
-    line-height: var(--ld-body);
+    letter-spacing: var(--tracking-body);
+    line-height: var(--leading-body);
 }
