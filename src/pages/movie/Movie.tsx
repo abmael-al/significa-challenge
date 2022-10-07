@@ -1,30 +1,30 @@
 import { useParams } from 'react-router-dom'
-import { useEntertainmentDetails } from '../../hooks';
+import { useEntertainmentDetails, useRouteNavigation } from '../../hooks';
 
 import { MovieDetails, Entertainment } from '../../proxies';
 import { MovieDetailsScreen } from './MovieDetailsScreen';
 
-interface MovieProps {
-    handleOnBackToSearchScreen(): void;
-}
-
-export const Movie = ({ handleOnBackToSearchScreen }: MovieProps) => {
+export const Movie = () => {
     const ENTERTAINMENT_TYPE: Entertainment = 'movie';
     const { id } = useParams();
     const { 
-        details,
-        isNotFound,
-        isLoading,
-        isError,
+        details, 
+        isNotFound, 
+        isLoading, 
+        isError, 
     } = useEntertainmentDetails<MovieDetails>(
         { id: id as string, type: ENTERTAINMENT_TYPE }
     );
-    
+        
+    const { navigateToHome } = useRouteNavigation();
+
     return (
         <>
             <section>
                 <div>
-                    <button onClick={handleOnBackToSearchScreen}>Back</button>
+                    <button onClick={navigateToHome}>
+                        Back
+                    </button>
                 </div>
 
                 {details &&

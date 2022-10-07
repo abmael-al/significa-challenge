@@ -4,11 +4,7 @@ import { Entertainment } from '../../proxies';
 
 const ENTERTAINMENT_TYPE: Entertainment = 'movie';
 
-interface SearchProps {
-    handleOnRedirectToDetails({ target }: React.MouseEvent): void;
-}
- 
-export const Search = ({ handleOnRedirectToDetails }: SearchProps) => {
+export const Search = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const query = searchParams.get('query') || '';
 
@@ -30,7 +26,6 @@ export const Search = ({ handleOnRedirectToDetails }: SearchProps) => {
 
             <SearchResultScreen 
                 searchConfig={{ query: query, type: ENTERTAINMENT_TYPE }}
-                handleOnRedirectToDetails={handleOnRedirectToDetails}
             />
         </div>
     )
