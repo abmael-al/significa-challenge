@@ -1,8 +1,10 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 
 import { Search, Movie, NotFound } from './pages';
 import { Header } from './layout';
 import { Entertainment } from './proxies';
+
+import './assets/styles/globals.css';
 
 export const ENTERTAINMENT_BOOKMARK_KEY = 'ent_bookmark'; 
 
