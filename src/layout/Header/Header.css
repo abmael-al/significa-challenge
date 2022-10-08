@@ -1,0 +1,8 @@
+
+.header {
+    inline-size: 100%;
+    padding-block: 1.5rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
