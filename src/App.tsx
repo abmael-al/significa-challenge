@@ -7,6 +7,7 @@ import { Entertainment } from './proxies';
 import './assets/styles/globals.css';
 
 export const ENTERTAINMENT_BOOKMARK_KEY = 'ent_bookmark'; 
+export const ENTERTAINMENT_TYPE: Entertainment = 'movie';
 
 export const ROUTE_PATHS = {
   movie: '/movie/:id'

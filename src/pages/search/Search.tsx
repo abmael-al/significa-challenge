@@ -1,40 +1,44 @@
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom'
+
+import { ENTERTAINMENT_TYPE } from '../../App';
 import { SearchResultScreen } from './SearchResultScreen';
-import { Entertainment } from '../../proxies';
 import { ReactComponent as Magnifier } from '../../assets/icons/icon-magnifier.svg';
 
 import './index.css';
 
-const ENTERTAINMENT_TYPE: Entertainment = 'movie';
-
 export const Search = () => {
     const [searchParams, setSearchParams] = useSearchParams();
+    const [textInput, setTextInput] = useState('');
     const query = searchParams.get('query') || '';
 
-    const handleOnSearchRequest = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        const query = event.currentTarget.value;
-        
-        if(event.key !== 'Enter' || query === '') return;
+    const handleOnSearchRequest = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setSearchParams({ query: textInput });
+    }
 
-        setSearchParams({ query: query });
+    const handleOnChange = ({ currentTarget }: React.ChangeEvent<HTMLInputElement>) => {
+        setTextInput(currentTarget.value);
     }
 
     return (
         <section className='fill-screen-accordingly'>
-            {/* TODO: Turn the search input section into a form */}
-            {/* TODO: Process the search request on click */}
-            <form className='search__bar'>
+            <form 
+                className='search__bar'
+                onSubmit={handleOnSearchRequest}
+            >
                 <button
-                    type='submit'
                     className='search__bar__button'
+                    type='submit'
                 >
                     <Magnifier />
                 </button>
                 <input 
-                    type='search'
                     className='search__bar__field'
+                    type='search'
+                    value={textInput}
                     placeholder='Search movies...'
-                    onKeyDown={handleOnSearchRequest}
+                    onChange={handleOnChange}
                 />
             </form>
 
