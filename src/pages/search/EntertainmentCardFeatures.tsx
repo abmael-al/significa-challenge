@@ -21,6 +21,11 @@ export const EntertainmentCardFeatures = ({ content }: EntertainmentCardFeatures
         bookmark.toggle(id);
     }
 
+    const handleOnNavigationRequestByKeyboard = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        if(event.key !== 'Enter') return;
+        handleOnNavigateToDetails(event);
+    }
+
     const handleOnClick = (event: React.MouseEvent) => {
         handleOnToggleInBookmark(event);
         handleOnNavigateToDetails(event);
@@ -28,7 +33,9 @@ export const EntertainmentCardFeatures = ({ content }: EntertainmentCardFeatures
 
     return (
         <div
+            className='cards__container'
             onClick={handleOnClick}
+            onKeyDown={handleOnNavigationRequestByKeyboard}
         >
             {content.map(ent => 
                 <EntertainmentCard
