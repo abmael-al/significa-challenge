@@ -7,7 +7,7 @@ export const useEventRouteNavigation = () => {
     const navigate = useNavigate();
 
     const handleOnNavigateToDetails = useCallback(
-        ({ target }: React.MouseEvent) => {
+        ({ target }: React.UIEvent) => {
             if(!(target instanceof HTMLElement)) return;
         
             const id = target.getAttribute('data-entertainment-id');
