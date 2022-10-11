@@ -13,6 +13,8 @@
     --clr-accent-100:hsl(174, 62%, 47%);
     --clr-accent-200:hsl(35, 100%, 55%);
     --clr-accent-200:hsl(0, 100%, 63%);
+    
+    --raw-clr-neutral-700: 206, 21%, 13%;
 
     /* typography */
     --ff-primary-fallback: sans-serif;
@@ -23,7 +25,7 @@
     --fw-bold: 700;
 
     --fs-300: 1rem;
-    --fs-400: 1.5rem;
+    --fs-400: 1.25rem;
     --fs-500: 1.5rem;
     --fs-900: 5rem;
 
