@@ -113,6 +113,8 @@
 .movie__card {
     inline-size: var(--movie-card-width);
     block-size: var(--movie-card-height);
+    border-radius: var(--movie-card-border-radius);
+    overflow: hidden;
 
     position: relative;
 }
@@ -120,7 +122,6 @@
 .movie__card__poster {
     inline-size: var(--movie-card-width);
     block-size: var(--movie-card-height);
-    border-radius: var(--movie-card-border-radius);
 
     object-fit: cover;
 }
@@ -134,7 +135,6 @@
     align-items: space-between;
 
     padding: var(--movie-card-padding);
-    border-radius: var(--movie-card-border-radius);
 
     position: absolute;
     inset: 0;
@@ -155,7 +155,7 @@
 }
 
 .movie__card__body__static {
-    --movie-card-body-transition: 0.8s cubic-bezier(0.45, 0, 0.55, 1);
+    --movie-card-body-transition: 0.2s cubic-bezier(0.45, 0, 0.55, 1);
     opacity: 1;
 }
 
@@ -207,6 +207,11 @@
 }
 
 .movie__card__title {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+
     font-size: var(--fs-heading-100);
     font-family: var(--ff-heading-100);
     font-weight: var(--fw-heading-100);
