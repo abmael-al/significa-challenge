@@ -32,11 +32,11 @@
     --tracking-100: 0.16px;
     --tracking-200: 0.2px;
     --tracking-300: 0.8px;
-/* 
-    --leading-100: 24%;
+
+    /* --leading-100: 24%;
     --leading-200: 28%;
-    --leading-300: 30%;
-    --leading-400: 88%; */
+    --leading-300: 30%; */
+    --leading-400: 1.1188;
 
     --ff-body: var(--ff-primary);
     --fw-body: var(--fw-regular);
@@ -60,7 +60,7 @@
     --fw-heading-300: var(--fw-bold);
     --fs-heading-300: var(--fs-900);
     --tracking-heading-300: var(--tracking-300);
-    /* --leading-heading-300: var(--leading-400); */
+    --leading-heading-300: var(--leading-400);
 
     /* sizes */
     --gap: 0.5rem;

@@ -3,6 +3,9 @@ import { useEntertainmentDetails, useRouteNavigation } from '../../hooks';
 
 import { MovieDetails, Entertainment } from '../../proxies';
 import { MovieDetailsScreen } from './MovieDetailsScreen';
+import { GeneralContainer } from '../../components';
+
+import './index.css'
 
 export const Movie = () => {
     const ENTERTAINMENT_TYPE: Entertainment = 'movie';
@@ -21,27 +24,29 @@ export const Movie = () => {
     return (
         <>
             <section>
-                <div>
-                    <button onClick={navigateToHome}>
-                        Back
-                    </button>
-                </div>
+                <GeneralContainer>
+                    <div>
+                        <button onClick={navigateToHome}>
+                            Back
+                        </button>
+                    </div>
 
-                {details &&
-                    <MovieDetailsScreen { ...details } />
-                }
+                    {details &&
+                        <MovieDetailsScreen { ...details } />
+                    }
 
-                {isNotFound &&
-                    <h1>Oops! Nothing found...</h1>
-                }
+                    {isNotFound &&
+                        <h1>Oops! Nothing found...</h1>
+                    }
 
-                {isLoading &&
-                    <h1>Loading...</h1>
-                }
+                    {isLoading &&
+                        <h1>Loading...</h1>
+                    }
 
-                {isError &&
-                    <h1>Something went wrong...</h1>
-                }
+                    {isError &&
+                        <h1>Something went wrong...</h1>
+                    }
+                </GeneralContainer>
             </section>
         </>
     )

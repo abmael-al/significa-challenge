@@ -1,0 +1,43 @@
+
+.details__screen {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.details__header,
+.details__action {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.details__title {
+    max-inline-size: 12ch;
+
+    /* display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;  
+    overflow: hidden; */
+
+    font-size: var(--fs-heading-300);
+    font-family: var(--ff-heading-300);
+    font-weight: var(--fw-heading-300);
+    letter-spacing: var(--tracking-heading-300);
+    line-height: var(--leading-heading-300);
+    color: var(--clr-neutral-300);
+}
+
+.details__topic__title {
+    font-size: var(--fs-300);
+    font-weight: var(--fw-medium);
+    color: var(--clr-neutral-500);
+}
+
+.details__topic__a {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.details__topic__b {
+    display: flex;
+    gap: 1.5rem;
+}
