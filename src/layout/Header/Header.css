@@ -1,7 +1,7 @@
 
 .header {
     inline-size: 100%;
-    padding-block: 1.5rem;
+    padding-block: 1.25rem;
     display: flex;
     justify-content: start;
     align-items: center;

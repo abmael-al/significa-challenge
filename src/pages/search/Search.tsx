@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 
 import { ENTERTAINMENT_TYPE } from '../../App';
 import { SearchResultScreen } from './SearchResultScreen';
+import { GeneralContainer } from "../../components"
 import { ReactComponent as Magnifier } from '../../assets/icons/icon-magnifier.svg';
 
 import './index.css';
@@ -22,29 +23,31 @@ export const Search = () => {
     }
 
     return (
-        <section className='fill-screen-accordingly'>
-            <form 
-                className='search__bar'
-                onSubmit={handleOnSearchRequest}
-            >
-                <button
-                    className='search__bar__button'
-                    type='submit'
+        <GeneralContainer>
+            <section className='search__screen fill-screen-accordingly'>
+                <form 
+                    className='search__bar'
+                    onSubmit={handleOnSearchRequest}
                 >
-                    <Magnifier />
-                </button>
-                <input 
-                    className='search__bar__field'
-                    type='search'
-                    value={textInput}
-                    placeholder='Search movies...'
-                    onChange={handleOnChange}
-                />
-            </form>
+                    <button
+                        className='search__bar__button'
+                        type='submit'
+                    >
+                        <Magnifier />
+                    </button>
+                    <input 
+                        className='search__bar__field'
+                        type='search'
+                        value={textInput}
+                        placeholder='Search movies...'
+                        onChange={handleOnChange}
+                    />
+                </form>
 
-            <SearchResultScreen 
-                searchConfig={{ query: query, type: ENTERTAINMENT_TYPE }}
-            />
-        </section>
+                <SearchResultScreen 
+                    searchConfig={{ query: query, type: ENTERTAINMENT_TYPE }}
+                />
+            </section>
+        </GeneralContainer>
     )
 } 

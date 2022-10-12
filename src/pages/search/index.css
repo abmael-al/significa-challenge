@@ -23,11 +23,16 @@
 }
 
 /* SEARCH BAR */
+.search__screen {
+    block-size: 100%;
+}
+
 .search__bar {
     display: flex;
     align-items: center;
     
     border-radius: var(--search-bar-border-radius);
+    overflow: hidden;
     
     background-color: var(--search-bar-background-clr);
 }
@@ -210,9 +215,10 @@
 }
 
 .cards__container {
-    display: flex;
-    padding-block: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--movie-card-width));
     justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+    gap: 1.25rem;
+
+    padding-block: 2rem;
 }
