@@ -1,6 +1,7 @@
+import { ButtonHTMLAttributes } from 'react';
 import { useBookmark } from '../../hooks';
 
-interface BookmarkToggleProps {
+interface BookmarkToggleProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     bookmarkKey: string;
     itemId: string;
     toggledOnRender: React.ReactNode;
@@ -12,6 +13,7 @@ export const BookmarkToggle = ({
     itemId, 
     toggledOnRender = 'Added to bookmark',
     toggledOffRender = 'Add to bookmark',
+    ...rest
 }: BookmarkToggleProps) => {
     const bookmark = useBookmark(bookmarkKey);
  
@@ -22,6 +24,7 @@ export const BookmarkToggle = ({
     return(
         <button 
             onClick={handleOnToggle}
+            { ...rest }
         >
             {bookmark.includes(itemId)
                 ? toggledOnRender

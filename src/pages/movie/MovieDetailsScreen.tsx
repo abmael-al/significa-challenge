@@ -1,25 +1,31 @@
 import { ENTERTAINMENT_BOOKMARK_KEY } from '../../App';
-import { BookmarkToggle } from '../../components';
 import { MovieDetails } from '../../proxies';
 
-type MovieDetailsScreenProps = MovieDetails;
+import { BookmarkToggle } from '../../components';
+import { ReactComponent as RottenTomatoesLogo } from '../../assets/logos/logo-rotten-tomatoes.svg';
+import { ReactComponent as IMDBLogo } from '../../assets/logos/logo-imdb.svg';
+import { ReactComponent as IconHeart } from '../../assets/icons/icon-heart.svg';
 
-interface SplittedTextProps {
-    text: string;
+interface ParagraphsExtractedProps {
+    by: string;
+    from: string;
 }
 
-const SplittedText = ({ text }: SplittedTextProps) => {
+const ParagraphsExtracted = ({ by, from }: ParagraphsExtractedProps) => {
     return (
         <>
-            {text
-                .split(',')
-                .map(item => 
-                    <p>{`${item}`}</p>    
+            {from.split(by)
+                .map(extractedItem =>
+                    <li key={extractedItem}>
+                        <p>{`${extractedItem}`}</p>
+                    </li>
                 )
             }
         </>
     )
 }
+
+type MovieDetailsScreenProps = MovieDetails;
 
 export const MovieDetailsScreen = ({ 
     Actors,
@@ -37,51 +43,77 @@ export const MovieDetailsScreen = ({
 }: MovieDetailsScreenProps) => {
     return (
         <main className='details__screen'> 
-            <div>
-                <div className='details__header'>
+            <section className='details__primary__info'>
+                <header className='details__header'>
                     <p>{Runtime}</p>
                     <p>{Year}</p>
                     <p>{Rated}</p>
-                </div>
+                </header>
                 
-                <h1 className='details__title'>{Title}</h1>
+                <h1 className='details__headline'>{Title}</h1>
                 
                 <div className='details__action'>
-                    <p>{imdbRating}/10</p>
-                    <p>{Metascore}%</p>
+                    <div className='details__label'>
+                        <div className='details__label__thumbnail thumbnail--yellow'>
+                            <IMDBLogo />
+                        </div>
+                        <p className='details__label__body'>{imdbRating}/10</p>
+                    </div>
+                    
+                    <div className='details__label'>
+                        <div className='details__label__thumbnail thumbnail--red'>
+                            <RottenTomatoesLogo />
+                        </div>
+                        <p className='details__label__body'>{Metascore}%</p>
+                    </div>
 
                     <BookmarkToggle 
+                        className='bookmark__toggle toggled--on'
                         bookmarkKey={ENTERTAINMENT_BOOKMARK_KEY}
                         itemId={imdbID}
-                        toggledOnRender='Added'
-                        toggledOffRender='Add to favorites'
+                        toggledOnRender={ 
+                            <>
+                                <IconHeart className='bookmark__toggle__icon' /> {`Added`}
+                            </> 
+                        }
+                        toggledOffRender={
+                            <>
+                                <IconHeart className='bookmark__toggle__icon' /> {`Add to favorites`}
+                            </> 
+                        }
                     />
                 </div>
                 
-                <div className='details__topic__a'>
-                    <div>
-                        <h5 className='details__topic__title'>Plot</h5>
+                <div className='details__subject__container'>
+                    <div className='details__subject'>
+                        <h5 className='details__subject__title'>Plot</h5>
                         <p>{Plot}</p>
-                    </div>
-    
-                    <div className='details__topic__b'>
-                        <div>
-                            <h5 className='details__topic__title'>Cast</h5>
-                            <SplittedText text={Actors} />
+                    </div> 
+                    
+                    <div className='details__subject__wrapper'>
+                        <div className='details__subject'>
+                            <h5 className='details__subject__title'>Cast</h5>
+                            <ul className='details__subject__content'>
+                                <ParagraphsExtracted by=',' from={Actors} />
+                            </ul>
                         </div>
 
-                        <div>
-                            <h5 className='details__topic__title'>Genre</h5>
-                            <SplittedText text={Genre} />
+                        <div className='details__subject'>
+                            <h5 className='details__subject__title'>Genre</h5>
+                            <ul className='details__subject__content'>
+                                <ParagraphsExtracted by=',' from={Genre} />
+                            </ul>
                         </div>
 
-                        <div>
-                            <h5 className='details__topic__title'>Director</h5>
-                            <SplittedText text={Director} />
+                        <div className='details__subject'>
+                            <h5 className='details__subject__title'>Director</h5>
+                            <ul className='details__subject__content'>
+                                <ParagraphsExtracted by=',' from={Director} />
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
             
             <div>
                 <img 

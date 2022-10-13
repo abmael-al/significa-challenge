@@ -12,7 +12,7 @@
 
     --clr-accent-100:hsl(174, 62%, 47%);
     --clr-accent-200:hsl(35, 100%, 55%);
-    --clr-accent-200:hsl(0, 100%, 63%);
+    --clr-accent-300:hsl(0, 100%, 63%);
     
     --raw-clr-neutral-700: 206, 21%, 13%;
 
@@ -131,7 +131,11 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
 
-ul { list-style: none; }
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 
 /* remove animations for people who've turned them off */
 @media (prefers-reduced-motion: reduce) {

@@ -7,10 +7,10 @@
 .details__header,
 .details__action {
     display: flex;
-    gap: 1.25rem;
+    gap: 1rem;
 }
 
-.details__title {
+.details__headline {
     max-inline-size: 12ch;
 
     /* display: -webkit-box;
@@ -26,18 +26,106 @@
     color: var(--clr-neutral-300);
 }
 
-.details__topic__title {
+.details__label {
+    --padding: 0.625rem;
+   
+    display: flex;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.details__label__thumbnail {
+    display: flex;
+    align-items: center;
+    padding: var(--padding);
+}
+
+.details__label__body {
+    padding: var(--padding);
+    border: 1px solid var(--clr-neutral-600);
+    border-inline-start: none;
+}
+
+.thumbnail--red {
+    background-color: var(--clr-accent-300);
+}
+
+.thumbnail--yellow {
+    background-color: var(--clr-accent-200);
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.details__primary__info {
+    --gap: 3rem;
+
+    display: grid;
+    gap: var(--gap);
+}
+
+.details__subject__container {
+    display: grid;
+    gap: var(--gap);
+
+    /* TODO: Define the final width */
+    inline-size: min-content;
+}
+
+.details__subject__wrapper {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap: var(--gap);
+}
+
+.details__subject {
+    display: grid;
+    grid-auto-rows: max-content;
+    gap: 1rem;
+}
+
+.details__subject__title {
+    block-size: max-content;
+
     font-size: var(--fs-300);
     font-weight: var(--fw-medium);
     color: var(--clr-neutral-500);
 }
 
-.details__topic__a {
-    display: grid;
-    gap: 1.5rem;
+.details__subject__content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
 }
 
-.details__topic__b {
+.bookmark__toggle {
+    padding-inline: 0.75rem;
+    padding-block: 0.5rem;
     display: flex;
-    gap: 1.5rem;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.bookmark__toggle__icon {
+    inline-size: 1.125rem;
+}
+
+.bookmark__toggle__icon .target--stroke {
+    stroke: var(--clr-neutral-500);
+}
+
+.toggled--on {
+    border: 1px solid var(--clr-neutral-600);
+    border-radius: 0.25rem;
+    color: var(--clr-neutral-500);
+    font-weight: var(--fw-medium);
+}
+
+.toggled--on:hover,
+.toggled--on:focus  {
+    border: 1px solid var(--clr-accent-300);
+    color: var(--clr-neutral-100);
 }
