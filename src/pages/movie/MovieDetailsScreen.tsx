@@ -1,10 +1,38 @@
 import { ENTERTAINMENT_BOOKMARK_KEY } from '../../App';
 import { MovieDetails } from '../../proxies';
 
-import { BookmarkToggle } from '../../components';
 import { ReactComponent as RottenTomatoesLogo } from '../../assets/logos/logo-rotten-tomatoes.svg';
 import { ReactComponent as IMDBLogo } from '../../assets/logos/logo-imdb.svg';
 import { ReactComponent as IconHeart } from '../../assets/icons/icon-heart.svg';
+
+import { useBookmark } from '../../hooks';
+
+interface BookmarkToggleProps {
+    itemId: string;
+}
+
+export const BookmarkToggle = ({ itemId }: BookmarkToggleProps) => {
+    const bookmark = useBookmark(ENTERTAINMENT_BOOKMARK_KEY);
+    const isBookmarked = bookmark.includes(itemId);
+
+    const handleOnToggle = () => {
+        bookmark.toggle(itemId);
+    }
+
+    return(
+        <button
+            className={
+                `bookmark__toggle ${ isBookmarked ? 'toggled--on' : 'toggled--off' }`
+            }
+            onClick={handleOnToggle}
+        >
+            {isBookmarked
+                ? <> <IconHeart className='bookmark__toggle__icon' /> {'Added'} </> 
+                : <> <IconHeart className='bookmark__toggle__icon' /> {`Add to favorites`} </> 
+            }
+        </button>
+    )
+}
 
 interface ParagraphsExtractedProps {
     by: string;
@@ -14,7 +42,8 @@ interface ParagraphsExtractedProps {
 const ParagraphsExtracted = ({ by, from }: ParagraphsExtractedProps) => {
     return (
         <>
-            {from.split(by)
+            {from
+                .split(by)
                 .map(extractedItem =>
                     <li key={extractedItem}>
                         <p>{`${extractedItem}`}</p>
@@ -67,21 +96,7 @@ export const MovieDetailsScreen = ({
                         <p className='details__label__body'>{Metascore}%</p>
                     </div>
 
-                    <BookmarkToggle 
-                        className='bookmark__toggle toggled--on'
-                        bookmarkKey={ENTERTAINMENT_BOOKMARK_KEY}
-                        itemId={imdbID}
-                        toggledOnRender={ 
-                            <>
-                                <IconHeart className='bookmark__toggle__icon' /> {`Added`}
-                            </> 
-                        }
-                        toggledOffRender={
-                            <>
-                                <IconHeart className='bookmark__toggle__icon' /> {`Add to favorites`}
-                            </> 
-                        }
-                    />
+                    <BookmarkToggle itemId={imdbID} />
                 </div>
                 
                 <div className='details__subject__container'>
