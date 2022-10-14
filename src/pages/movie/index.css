@@ -1,5 +1,6 @@
 
 :root {
+    /* BOOKMARK TOGGLE */
     --bookmark-toggle-padding: 0.5em;
     --bookmark-toggle-border: 1px solid var(--clr-neutral-600);
     --bookmark-toggle-border-radius: 0.25rem;
@@ -7,6 +8,13 @@
     --bookmark-toggle-font-weight: var(--fw-medium);
     --bookmark-toggle-background-clr: transparent;
     --bookmark-toggle-icon-background-clr: transparent;
+
+    /* RATING LABEL */
+    --rating-label-padding: 0.5em;
+    --rating-label-border: 1px solid var(--clr-neutral-600);
+    --rating-label-border-radius: 0.25rem;
+    --thumbnail-yellow: var(--clr-accent-200);
+    --thumbnail-red: var(--clr-accent-300);
 }
 
 .details__screen {
@@ -34,38 +42,6 @@
     letter-spacing: var(--tracking-heading-300);
     line-height: var(--leading-heading-300);
     color: var(--clr-neutral-300);
-}
-
-.details__label {
-    --padding: 0.625rem;
-   
-    display: flex;
-    border-radius: 0.25rem;
-    overflow: hidden;
-}
-
-.details__label__thumbnail {
-    display: flex;
-    align-items: center;
-    padding: var(--padding);
-}
-
-.details__label__body {
-    padding: var(--padding);
-    border: 1px solid var(--clr-neutral-600);
-    border-inline-start: none;
-}
-
-.thumbnail--red {
-    background-color: var(--clr-accent-300);
-}
-
-.thumbnail--yellow {
-    background-color: var(--clr-accent-200);
-}
-
-.no-padding {
-    padding: 0;
 }
 
 .details__primary__info {
@@ -126,6 +102,45 @@
     background-color: var(--bookmark-toggle-background-clr);
 }
 
+/* RATING LABEL */
+.rating__label {
+    display: grid;
+    grid-auto-flow: column;
+    
+    border-radius: var(--rating-label-border-radius);
+    overflow: hidden;
+}
+
+.rating__label__thumbnail {
+    display: flex;
+    align-items: center;
+    
+    padding-inline: calc(var(--rating-label-padding) + 0.125em);
+    padding-block: var(--rating-label-padding);
+}
+
+.rating__label__body {
+    display: flex;
+    align-items: center;
+
+    padding-inline: calc(var(--rating-label-padding) + 0.125em);
+    padding-block: var(--rating-label-padding);
+    
+    border: var(--rating-label-border);
+    border-inline-start: none;
+    border-start-end-radius: var(--rating-label-border-radius);
+    border-end-end-radius: var(--rating-label-border-radius);
+}
+
+.thumbnail--yellow {
+    background-color: var(--clr-accent-200);
+}
+
+.thumbnail--red {
+    background-color: var(--clr-accent-300);
+}
+
+/* BOOKMARK TOGGLE */
 .bookmark__toggle__icon {
     inline-size: 1rem;
 }

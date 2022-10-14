@@ -82,20 +82,23 @@ export const MovieDetailsScreen = ({
                 <h1 className='details__headline'>{Title}</h1>
                 
                 <div className='details__action'>
-                    <div className='details__label'>
-                        <div className='details__label__thumbnail thumbnail--yellow'>
+                    <div className='rating__label'>
+                        <div className='rating__label__thumbnail thumbnail--yellow'>
                             <IMDBLogo />
                         </div>
-                        <p className='details__label__body'>{imdbRating}/10</p>
+                        <div className='rating__label__body'>
+                            <p>{imdbRating}/10</p>
+                        </div>
                     </div>
                     
-                    <div className='details__label'>
-                        <div className='details__label__thumbnail thumbnail--red'>
+                    <div className='rating__label'>
+                        <div className='rating__label__thumbnail thumbnail--red'>
                             <RottenTomatoesLogo />
                         </div>
-                        <p className='details__label__body'>{Metascore}%</p>
+                        <div className='rating__label__body'>
+                            <p >{Metascore}%</p>
+                        </div>
                     </div>
-
                     <BookmarkToggle itemId={imdbID} />
                 </div>
                 
