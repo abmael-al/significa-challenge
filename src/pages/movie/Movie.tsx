@@ -1,9 +1,11 @@
-import { useParams } from 'react-router-dom'
-import { useEntertainmentDetails, useRouteNavigation } from '../../hooks';
-
 import { MovieDetails, Entertainment } from '../../proxies';
-import { MovieDetailsScreen } from './MovieDetailsScreen';
+
+import { useParams, Link,  } from 'react-router-dom'
+import { useEntertainmentDetails } from '../../hooks';
+
 import { GeneralContainer } from '../../components';
+import { MovieDetailsScreen } from './MovieDetailsScreen';
+import { ReactComponent as IconArrow } from '../../assets/icons/icon-arrow.svg';
 
 import './index.css'
 
@@ -19,17 +21,18 @@ export const Movie = () => {
         { id: id as string, type: ENTERTAINMENT_TYPE }
     );
         
-    const { navigateToHome } = useRouteNavigation();
-
     return (
         <>
             <section>
                 <GeneralContainer>
-                    <div>
-                        <button onClick={navigateToHome}>
-                            Back
-                        </button>
-                    </div>
+                    <nav className='nav__bar'>
+                        <Link 
+                            to='/'
+                            className='nav__bar__back__link'
+                        >
+                            <IconArrow />
+                        </Link>
+                    </nav>
 
                     {details &&
                         <MovieDetailsScreen { ...details } />

@@ -26,10 +26,8 @@ export const BookmarkToggle = ({ itemId }: BookmarkToggleProps) => {
             }
             onClick={handleOnToggle}
         >
-            {isBookmarked
-                ? <> <IconHeart className='bookmark__toggle__icon' /> {'Added'} </> 
-                : <> <IconHeart className='bookmark__toggle__icon' /> {`Add to favorites`} </> 
-            }
+            <IconHeart className='bookmark__toggle__icon' />
+            {isBookmarked ? 'Added' : 'Add to favorites' }
         </button>
     )
 }
@@ -71,12 +69,14 @@ export const MovieDetailsScreen = ({
     imdbID
 }: MovieDetailsScreenProps) => {
     return (
-        <main className='details__screen'> 
+        <main className='details__screen'>
             <section className='details__primary__info'>
                 <header className='details__header'>
-                    <p>{Runtime}</p>
-                    <p>{Year}</p>
-                    <p>{Rated}</p>
+                    <p className='details__header__item'>
+                        <span>{Runtime}</span>{'·'} 
+                        <span>{Year}</span>{'·'} 
+                        <span className='rated__label'>{Rated}</span>
+                    </p>
                 </header>
                 
                 <h1 className='details__headline'>{Title}</h1>
@@ -99,6 +99,7 @@ export const MovieDetailsScreen = ({
                             <p >{Metascore}%</p>
                         </div>
                     </div>
+                    
                     <BookmarkToggle itemId={imdbID} />
                 </div>
                 
@@ -133,13 +134,14 @@ export const MovieDetailsScreen = ({
                 </div>
             </section>
             
-            <div>
+            <figure className='poster__container'>
                 <img 
+                    className='poster'
                     src={Poster} 
                     alt={Title}
                     loading='lazy' 
                 />
-            </div>
+            </figure>
         </main>
     )
 } 

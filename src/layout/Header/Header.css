@@ -1,8 +1,12 @@
+:root {
+    --header-white-space: 1.5rem;
+}
 
 .header {
-    inline-size: 100%;
-    padding-block: 1.25rem;
     display: flex;
     justify-content: start;
     align-items: center;
+    
+    inline-size: 100%;
+    margin-block: var(--header-white-space);
 }
