@@ -68,6 +68,7 @@
 .search__bar__icon {
     stroke: var(--search-bar-icon-clr);
 }
+
 /* 
 .search__bar__button:hover .search__bar__icon {
     --search-bar-icon-clr: var(--clr-neutral-100);
@@ -146,20 +147,26 @@
     background-color: var(--movie-card-body-background-clr);
 }
 
+.movie__card__link {
+    position: absolute;
+    inset: 0;
+}
+
 .movie__card__body:hover,
-.movie__card__body:focus,
 .movie__card__body:has(.movie__card__action:focus),
+.movie__card__body:has(.movie__card__link:hover),
+.movie__card__body:has(.movie__card__link:focus),
 .movie__card__action:hover ~ .movie__card__body,
 .movie__card__action:focus ~ .movie__card__body {
     opacity: 1;
 }
 
-.movie__card__body__static {
+.movie__card__body--static {
     --movie-card-body-transition: 0.2s cubic-bezier(0.45, 0, 0.55, 1);
     opacity: 1;
 }
 
-.movie__card__body:focus,
+.movie__card__link:focus,
 .movie__card__action:focus {
     outline: var(--movie-card-focus-outline);
 }
@@ -169,32 +176,33 @@
     justify-self: end;
 
     block-size: 1.5rem;
-}
-
-.movie__card__action:has(.icon--heart--filled) {
-    position: absolute;
-    top: var(--movie-card-padding);
-    right: var(--movie-card-padding);
+    
     z-index: 9;
 }
 
-.icon--heart--filled {
+.movie__card__action:has(.icon__heart--filled) {
+    position: absolute;
+    top: var(--movie-card-padding);
+    right: var(--movie-card-padding);
+}
+
+.icon__heart--filled {
     filter: drop-shadow(var(--icon-heart-filled-drop-shadow));
 }
 
-.icon--heart--filled .target--fill {
+.icon__heart--filled .target--fill {
     fill: var(--icon-heart-filled-clr);
 }
 
-.icon--heart--filled .target--stroke {
+.icon__heart--filled .target--stroke {
     stroke: var(--icon-heart-filled-clr);
 }
 
-.icon--heart--outlined--active .target--stroke {
+.icon__heart--outlined--active .target--stroke {
     stroke: var(--icon-heart-outlined-active-clr);
 }
 
-.icon--heart--outlined--disabled .target--stroke {
+.icon__heart--outlined--disabled .target--stroke {
     stroke: var(--icon-heart-outlined-disabled-clr);
 }
 

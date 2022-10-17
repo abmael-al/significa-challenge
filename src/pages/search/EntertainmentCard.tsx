@@ -1,5 +1,9 @@
 import { EntertainmentPresentation } from "../../proxies";
+import { navigateTo } from "../../App";
+
+import { Link } from "react-router-dom";
 import { ReactComponent as IconHeart } from "../../assets/icons/icon-heart.svg";
+
 import { useState } from "react";
 
 type EntertainmentCardProps = EntertainmentPresentation & {
@@ -19,8 +23,8 @@ const ActionButton = ({ id, isBookmarked }: ActionButtonProps) => {
             tabIndex={0}
         >
             {isBookmarked 
-                ? <IconHeart className='icon--heart--filled pointer-events-none' />
-                : <IconHeart className='icon--heart--outlined--active pointer-events-none' />
+                ? <IconHeart className='icon__heart--filled pointer-events-none' />
+                : <IconHeart className='icon__heart--outlined--active pointer-events-none' />
             }
         </button>
     )
@@ -51,7 +55,7 @@ export const EntertainmentCard = ({
                     className='movie__card__poster'
                     src={Poster}
                     alt={isFallbackPoster 
-                            ? 'An error ocurred loading the poster of the film.' 
+                            ? 'An error ocurred loading the poster.' 
                             : `A poster of ${Title}.`
                         }
                     loading='lazy'
@@ -68,14 +72,16 @@ export const EntertainmentCard = ({
                     className={
                         `movie__card__body ${
                             isFallbackPoster 
-                            ? 'movie__card__body__static' 
+                            ? 'movie__card__body--static' 
                             : ''
                         }`
                     }
-                    data-entertainment-id={imdbID}
-                    data-entertainment-type={Type}
-                    tabIndex={0}
                 >
+                    <Link 
+                        to={navigateTo.details(imdbID, Type)} 
+                        className='movie__card__link' 
+                    />
+
                     {!isBookmarked && 
                         <ActionButton id={imdbID} isBookmarked={false} />
                     }

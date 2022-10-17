@@ -1,6 +1,8 @@
-import { useBookmark, useEventRouteNavigation } from "../../hooks";
 import { ENTERTAINMENT_BOOKMARK_KEY } from '../../App';
 import { EntertainmentPresentation } from "../../proxies";
+
+import { useBookmark } from "../../hooks";
+
 import { EntertainmentCard } from "./EntertainmentCard";
 
 interface EntertainmentCardFeaturesProps {
@@ -8,7 +10,6 @@ interface EntertainmentCardFeaturesProps {
 }
 
 export const EntertainmentCardFeatures = ({ content }: EntertainmentCardFeaturesProps) => {
-    const { handleOnNavigateToDetails } = useEventRouteNavigation();
     const bookmark = useBookmark(ENTERTAINMENT_BOOKMARK_KEY);
 
     const handleOnToggleInBookmark = ({ target }: React.MouseEvent) => {
@@ -21,21 +22,10 @@ export const EntertainmentCardFeatures = ({ content }: EntertainmentCardFeatures
         bookmark.toggle(id);
     }
 
-    const handleOnNavigationRequestByKeyboard = (event: React.KeyboardEvent<HTMLDivElement>) => {
-        if(event.key !== 'Enter') return;
-        handleOnNavigateToDetails(event);
-    }
-
-    const handleOnClick = (event: React.MouseEvent) => {
-        handleOnToggleInBookmark(event);
-        handleOnNavigateToDetails(event);
-    }
-
     return (
         <div
             className='cards__container'
-            onClick={handleOnClick}
-            onKeyDown={handleOnNavigationRequestByKeyboard}
+            onClick={handleOnToggleInBookmark}
         >
             {content.map(ent => 
                 <EntertainmentCard
