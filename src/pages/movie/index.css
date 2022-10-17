@@ -1,6 +1,11 @@
 :root {
     /* NAV BAR */
     --back-link-clr: #8B93A6;
+    
+    /* POSTER */
+    --poster-width: 18.75rem;
+    --poster-border-radius: 0.5rem;
+    --poster-box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
     /* BOOKMARK TOGGLE */
     --bookmark-toggle-padding: 0.5em;
@@ -28,6 +33,7 @@
     --white-space-100: 1rem;
     --white-space-200: 2rem;
     --white-space-300: 3rem;
+    --white-space-400: 4rem;
 }
 
 .nav__bar {
@@ -46,6 +52,8 @@
 .details__screen {
     display: grid;
     grid-auto-flow: column;
+    grid-template-columns: 50% 50%;
+    margin-block-end: var(--white-space-400);
 }
 
 .details__header {
@@ -66,7 +74,6 @@
 .rated__label {
     padding-inline: 0.375rem;
     padding-block: 0.25rem;
-    margin-inline-start: 0.2rem;
     border-radius: var(--rated-label-border-radius);
     
     font-weight: var(--rated-label-font-weight);
@@ -101,8 +108,7 @@
 .details__subject__container {
     display: grid;
 
-    /* TODO: Define the final width */
-    inline-size: min-content;
+    inline-size: 90%;
 }
 
 .details__subject__wrapper {
@@ -136,14 +142,14 @@
 }
 
 .poster {
-    inline-size: 300px;
-    border-radius: 0.5rem;
+    inline-size: var(--poster-width);
+    border-radius: var(--poster-border-radius);
 }
 
 .poster__container {
-    block-size: max-content;
     justify-self: center;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);;
+    block-size: max-content;
+    box-shadow: var(--poster-box-shadow);
 }
 
 /* RATING LABEL */
