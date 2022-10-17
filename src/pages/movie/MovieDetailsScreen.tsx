@@ -87,7 +87,7 @@ export const MovieDetailsScreen = ({
                             <IMDBLogo />
                         </div>
                         <div className='rating__label__body'>
-                            <p>{imdbRating}/10</p>
+                            <p >{imdbRating !== 'N/A' ? `${imdbRating}/10` : imdbRating}</p>
                         </div>
                     </div>
                     
@@ -96,7 +96,7 @@ export const MovieDetailsScreen = ({
                             <RottenTomatoesLogo />
                         </div>
                         <div className='rating__label__body'>
-                            <p >{Metascore}%</p>
+                            <p >{Metascore !== 'N/A' ? `${Metascore}%`: Metascore}</p>
                         </div>
                     </div>
                     
@@ -139,7 +139,7 @@ export const MovieDetailsScreen = ({
                     className='poster'
                     src={Poster} 
                     alt={Title}
-                    loading='lazy' 
+                    loading='lazy'
                 />
             </figure>
         </main>
