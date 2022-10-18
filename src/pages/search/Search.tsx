@@ -2,11 +2,16 @@ import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom'
 
 import { ENTERTAINMENT_TYPE } from '../../App';
+
 import { SearchResultScreen } from './SearchResultScreen';
 import { GeneralContainer } from "../../components"
 import { ReactComponent as Magnifier } from '../../assets/icons/icon-magnifier.svg';
 
 import './index.css';
+
+const removeExtraSpace = (str: string) => {
+    return str.replace(/\s+/g, ' ').trim();
+}
 
 export const Search = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -15,7 +20,12 @@ export const Search = () => {
 
     const handleOnSearchRequest = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setSearchParams({ query: textInput });
+        
+        const formattedTextInput = removeExtraSpace(textInput);
+        
+        if(formattedTextInput === '') return;
+        
+        setSearchParams({ query: formattedTextInput });
     }
 
     const handleOnChange = ({ currentTarget }: React.ChangeEvent<HTMLInputElement>) => {
