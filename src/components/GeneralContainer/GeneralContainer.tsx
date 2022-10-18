@@ -1,12 +1,15 @@
-import './GeneralContainer.css';
+import './generalContainer.css';
 
-interface GeneralContainerProps {
-    children: React.ReactNode | React.ReactNode[];
+interface GeneralContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+    wrapperClass?: string;
 }
 
-export const GeneralContainer = ({ children }: GeneralContainerProps) => {
+export const GeneralContainer = ({ children, wrapperClass, ...rest }: GeneralContainerProps) => {
     return (
-        <div className="general__container">
+        <div 
+            className={`general__container ${wrapperClass}`} 
+            { ...rest }
+        >
             {children}
         </div>
     );
