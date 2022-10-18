@@ -80,6 +80,15 @@
     --search-bar-icon-clr: var(--clr-neutral-600);
 }
 
+.search__result__screen {
+    display: grid;
+}
+
+.search__result__loading__state {
+    justify-self: center;
+    align-self: center;
+}
+
 /* EMPTY STATE */
 .empty__state {
     display: flex;

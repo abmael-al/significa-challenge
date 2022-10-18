@@ -2,6 +2,8 @@ import { useSearchEntertainmentsByTitle } from "../../hooks";
 import { SearchConfig } from "../../proxies";
 import { EntertainmentCardFeatures } from "./EntertainmentCardFeatures";
 
+import { LoadingAnimation } from "../../components";
+
 interface SearchResultScreenProps {
     searchConfig: SearchConfig;
 }
@@ -17,6 +19,7 @@ export const SearchResultScreen = ({ searchConfig }: SearchResultScreenProps) =>
     const noRequestWasMadeBefore = !entertainments && searchConfig.query === '';
 
     return (
+        // TODO: Rename to search result container
         <main className="search__result__screen">
             {entertainments &&
                 <EntertainmentCardFeatures 
@@ -44,8 +47,10 @@ export const SearchResultScreen = ({ searchConfig }: SearchResultScreenProps) =>
                 </div>
             }
 
-            {isLoading &&
-                <h1>Loading...</h1>
+            {isLoading && 
+                <LoadingAnimation 
+                    wrapperClass='search__result__loading__state' 
+                />
             }
 
             {isNotFound &&

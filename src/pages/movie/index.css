@@ -36,6 +36,17 @@
     --white-space-400: 4rem;
 }
 
+.details__container {
+    display: grid;
+    grid-template-rows: max-content auto;
+    block-size: 100%;
+}
+
+.details__loading__state {
+    align-self: center;
+    justify-self: center;
+}
+
 .nav__bar {
     margin-block-start: 0.5rem;
     margin-block-end: var(--white-space-200);
