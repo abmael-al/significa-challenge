@@ -3,12 +3,7 @@ import { navigateTo } from "../../App";
 
 import { Link } from "react-router-dom";
 import { ReactComponent as IconHeart } from "../../assets/icons/icon-heart.svg";
-
-import { useState } from "react";
-
-type EntertainmentCardProps = EntertainmentPresentation & {
-    isBookmarked: boolean;
-};
+import { ProgressiveLazyPoster } from "./ProgressiveLazyPoster";
 
 interface ActionButtonProps {
     id: string;
@@ -30,6 +25,10 @@ const ActionButton = ({ id, isBookmarked }: ActionButtonProps) => {
     )
 }
 
+interface EntertainmentCardProps extends EntertainmentPresentation {
+    isBookmarked: boolean;
+};
+
 export const EntertainmentCard = ({
     Poster,
     Title,
@@ -38,28 +37,13 @@ export const EntertainmentCard = ({
     imdbID,
     isBookmarked,
 }: EntertainmentCardProps) => {
-    const [isFallbackPoster, setIsFallbackPoster] = useState(false);
-
-    const FALLBACK_IMAGE = '/illustrations/illustration-empty-state.png';
-    
-    const handleImageOnError = ({ currentTarget }: React.SyntheticEvent<HTMLImageElement, Event>) => {
-        currentTarget.src = FALLBACK_IMAGE;
-        currentTarget.classList.add('movie__card__fallback__poster');
-        setIsFallbackPoster(true);
-    }
-
     return (
         <div className='movie__card'>
             <div>
-                <img 
-                    className='movie__card__poster'
+                {/* TODO: It would be optimal if i were able to reuse this component throughout the system. */}
+                <ProgressiveLazyPoster 
                     src={Poster}
-                    alt={isFallbackPoster 
-                            ? 'An error ocurred loading the poster.' 
-                            : `A poster of ${Title}.`
-                        }
-                    loading='lazy'
-                    onError={handleImageOnError}
+                    alt={Title}
                 />
             </div>
 
@@ -68,15 +52,7 @@ export const EntertainmentCard = ({
                     <ActionButton id={imdbID} isBookmarked={true} />
                 }
 
-                <div 
-                    className={
-                        `movie__card__body ${
-                            isFallbackPoster 
-                            ? 'movie__card__body--static' 
-                            : ''
-                        }`
-                    }
-                >
+                <div className='movie__card__body'>
                     <Link 
                         to={navigateTo.details(imdbID, Type)} 
                         className='movie__card__link' 

@@ -14,8 +14,10 @@
     --movie-card-focus-outline: 1px solid var(--clr-neutral-100);
     
     --movie-card-body-background-clr: hsl( var(--raw-clr-neutral-700), 0.75 );
-    --movie-card-body-transition: 0.6s cubic-bezier(0.45, 0, 0.55, 1);
+    --movie-card-body-transition: 0.5s cubic-bezier(0.45, 0, 0.55, 1);
     
+    --poster-loaded-animation: fade-in cubic-bezier(0.64, 0, 0.78, 0) 0.2s;
+
     --icon-heart-filled-clr: var(--clr-neutral-100);
     --icon-heart-filled-drop-shadow: 0px 2px 4px rgb(0 0 0 / 0.4);
     --icon-heart-outlined-active-clr: var(--clr-neutral-100);
@@ -136,8 +138,20 @@
     object-fit: cover;
 }
 
-.movie__card__fallback__poster {
+.poster--fallback {
+    background-color: var(--clr-neutral-800);
     object-fit: contain;
+}
+
+.poster--loaded:not(.poster--fallback) {
+    background-color: var(--clr-neutral-700);
+    animation: var(--poster-loaded-animation);
+}
+
+/* TODO: If it's going to be reused move it into its own file. */
+@keyframes fade-in {
+    from { opacity: 0; }   
+    to { opacity: 1; }
 }
 
 .movie__card__body {
@@ -170,8 +184,8 @@
     opacity: 1;
 }
 
-.movie__card__body--static {
-    --movie-card-body-transition: 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+.movie__card:has(.poster--fallback) .movie__card__body {
+    --movie-card-body-transition: none;
     opacity: 1;
 }
 
