@@ -14,7 +14,7 @@
     --movie-card-focus-outline: 1px solid var(--clr-neutral-100);
     
     --movie-card-body-background-clr: hsl( var(--raw-clr-neutral-700), 0.75 );
-    --movie-card-body-transition: 0.5s cubic-bezier(0.45, 0, 0.55, 1);
+    --movie-card-body-transition: 0.5s cubic-bezier(0.37, 0, 0.63, 1);
     
     --poster-loaded-animation: fade-in cubic-bezier(0.64, 0, 0.78, 0) 0.2s;
 
