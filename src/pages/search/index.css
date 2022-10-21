@@ -16,7 +16,7 @@
     --movie-card-body-background-clr: hsl( var(--raw-clr-neutral-700), 0.75 );
     --movie-card-body-transition: 0.5s cubic-bezier(0.37, 0, 0.63, 1);
     
-    --poster-loaded-animation: fade-in cubic-bezier(0.64, 0, 0.78, 0) 0.2s;
+    --poster-loaded-animation: fade-in cubic-bezier(0.12, 0, 0.39, 0) 0.5s;
 
     --icon-heart-filled-clr: var(--clr-neutral-100);
     --icon-heart-filled-drop-shadow: 0px 2px 4px rgb(0 0 0 / 0.4);
