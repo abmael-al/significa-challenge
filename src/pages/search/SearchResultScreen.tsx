@@ -2,7 +2,11 @@ import { useSearchEntertainmentsByTitle } from "../../hooks";
 import { SearchConfig } from "../../proxies";
 import { EntertainmentCardFeatures } from "./EntertainmentCardFeatures";
 
-import { LoadingAnimation, NothingWasFound } from "../../components";
+import { 
+    LoadingAnimation, 
+    NothingWasFound, 
+    SomethingWentWrong 
+} from "../../components";
 
 interface SearchResultScreenProps {
     searchConfig: SearchConfig;
@@ -60,7 +64,9 @@ export const SearchResultScreen = ({ searchConfig }: SearchResultScreenProps) =>
             }
 
             {isError &&
-                <h1>Some error ocurred...</h1>
+                <SomethingWentWrong 
+                    wrapperClass='state__screen' 
+                />
             }   
         </main>
     )

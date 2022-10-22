@@ -1,0 +1,31 @@
+.sww__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.sww__illustration {
+    inline-size: 4rem;
+    block-size: max-content;
+}
+
+.sww__illustration .target--fill {
+    fill: var(--clr-accent-300);
+}
+
+.sww__body {
+    text-align: center;
+    max-inline-size: 36ch;
+}
+
+.sww__title {
+    margin-block-end: 0.5rem;
+
+    font-size: var(--fs-heading-200);
+    font-family: var(--ff-heading-200);
+    font-weight: var(--fw-heading-200);
+    letter-spacing: var(--tracking-heading-200);
+    color: var(--clr-neutral-100);
+}
