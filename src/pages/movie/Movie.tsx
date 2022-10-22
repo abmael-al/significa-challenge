@@ -3,9 +3,14 @@ import { MovieDetails, Entertainment } from '../../proxies';
 import { useParams, Link,  } from 'react-router-dom'
 import { useEntertainmentDetails } from '../../hooks';
 
-import { GeneralContainer, LoadingAnimation } from '../../components';
 import { MovieDetailsScreen } from './MovieDetailsScreen';
 import { ReactComponent as IconArrow } from '../../assets/icons/icon-arrow.svg';
+import { 
+    GeneralContainer, 
+    LoadingAnimation, 
+    SomethingWentWrong,
+    EntertainmentNotFound 
+} from '../../components';
 
 import './index.css'
 
@@ -43,16 +48,20 @@ export const Movie = () => {
 
                     {isLoading && 
                         <LoadingAnimation 
-                            wrapperClass='details__loading__state' 
+                            wrapperClass='details__state__screen' 
                         />
                     }
 
                     {isNotFound &&
-                        <h1>Oops! Nothing found...</h1>
+                        <EntertainmentNotFound 
+                            wrapperClass='details__state__screen'
+                        />
                     }
 
                     {isError &&
-                        <h1>Something went wrong...</h1>
+                        <SomethingWentWrong 
+                            wrapperClass='details__state__screen' 
+                        />
                     }
                 </GeneralContainer>
             </section>
