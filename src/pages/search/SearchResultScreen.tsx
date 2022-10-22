@@ -59,7 +59,7 @@ export const SearchResultScreen = ({ searchConfig }: SearchResultScreenProps) =>
 
             {isNotFound &&
                 <NothingWasFound 
-                    className='state__screen' 
+                    wrapperClass='state__screen' 
                 />
             }
 

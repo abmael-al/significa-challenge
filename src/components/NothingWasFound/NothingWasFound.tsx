@@ -1,9 +1,11 @@
 import { ReactComponent as NoSearchResultIcon } from '../../assets/icons/no-search-result.svg';
 import './nothingWasFound.css';
 
-interface NothingWasFoundProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface NothingWasFoundProps {
+    wrapperClass: string;
+}
 
-export const NothingWasFound = ({ className: wrapperClass }: NothingWasFoundProps) => {
+export const NothingWasFound = ({ wrapperClass }: NothingWasFoundProps) => {
     return (
         <div className={`nwf__container ${wrapperClass}`}>
             <div>
