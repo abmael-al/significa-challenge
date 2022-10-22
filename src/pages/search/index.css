@@ -86,7 +86,7 @@
     display: grid;
 }
 
-.search__result__loading__state {
+.state__screen {
     justify-self: center;
     align-self: center;
 }

@@ -1,0 +1,29 @@
+.nwf__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nwf__illustration {
+    inline-size: 4rem;
+}
+
+.nwf__illustration .target--fill {
+    fill: var(--clr-accent-300);
+}
+
+.nwf__body {
+    text-align: center;
+    max-inline-size: 36ch;
+}
+
+.nwf__title {
+    margin-block-end: 0.5rem;
+
+    font-size: var(--fs-heading-200);
+    font-family: var(--ff-heading-200);
+    font-weight: var(--fw-heading-200);
+    letter-spacing: var(--tracking-heading-200);
+    color: var(--clr-neutral-100);
+}

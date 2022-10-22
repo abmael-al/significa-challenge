@@ -2,7 +2,7 @@ import { useSearchEntertainmentsByTitle } from "../../hooks";
 import { SearchConfig } from "../../proxies";
 import { EntertainmentCardFeatures } from "./EntertainmentCardFeatures";
 
-import { LoadingAnimation } from "../../components";
+import { LoadingAnimation, NothingWasFound } from "../../components";
 
 interface SearchResultScreenProps {
     searchConfig: SearchConfig;
@@ -49,12 +49,14 @@ export const SearchResultScreen = ({ searchConfig }: SearchResultScreenProps) =>
 
             {isLoading && 
                 <LoadingAnimation 
-                    wrapperClass='search__result__loading__state' 
+                    wrapperClass='state__screen' 
                 />
             }
 
             {isNotFound &&
-                <h1>Nothing found...</h1>
+                <NothingWasFound 
+                    className='state__screen' 
+                />
             }
 
             {isError &&
