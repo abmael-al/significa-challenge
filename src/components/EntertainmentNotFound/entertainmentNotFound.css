@@ -6,7 +6,7 @@
 }
 
 .enf__illustration {
-    inline-size: 6rem;
+    inline-size: 4rem;
 }
 
 .enf__illustration .target--fill {
@@ -14,16 +14,9 @@
 }
 
 .enf__body {
-    max-inline-size: 36ch;
     text-align: center;
 }
 
-.enf__title {
-    margin-block-end: 0.5rem;
-
-    font-size: var(--fs-heading-100);
-    font-family: var(--ff-heading-100);
-    font-weight: var(--fw-regular);
-    letter-spacing: var(--tracking-heading-100);
-    color: var(--clr-neutral-100);
+.enf__supporting__text {
+    max-inline-size: 36ch;
 }

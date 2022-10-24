@@ -13,8 +13,7 @@ export const EntertainmentNotFound = ({ wrapperClass }: EntertainmentNotFoundPro
                 <Error404Icon className='enf__illustration' />
             </div>
             <div className='enf__body'>
-                <h1 className='enf__title'>This wasn't supposed to happen...</h1>
-                <p>Sorry, the movie you're looking for cannot be found. We've tracked the error and will get right on it.</p>
+                <p className='enf__supporting__text'>Sorry, looks like the movie you're looking for cannot be found.</p>
             </div>
         </div>
     )
