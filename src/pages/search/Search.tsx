@@ -33,14 +33,16 @@ export const Search = () => {
     }
 
     return (
-        <GeneralContainer>
-            <section className='search__screen fill-screen-accordingly'>
+        <section>
+            <GeneralContainer
+                wrapperClass='search__screen__container'
+            >
                 <form 
                     className='search__bar'
                     onSubmit={handleOnSearchRequest}
                 >
                     <button
-                        className='search__bar__button'
+                        className='search__bar__submit'
                         type='submit'
                     >
                         <Magnifier />
@@ -55,9 +57,9 @@ export const Search = () => {
                 </form>
 
                 <SearchResultScreen 
-                    searchConfig={{ query: query, type: ENTERTAINMENT_TYPE }}
+                    config={{ query: query, type: ENTERTAINMENT_TYPE }}
                 />
-            </section>
-        </GeneralContainer>
+            </GeneralContainer>
+        </section>
     )
 } 

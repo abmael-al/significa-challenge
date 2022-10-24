@@ -25,7 +25,9 @@
 }
 
 /* SEARCH BAR */
-.search__screen {
+.search__screen__container {
+    display: grid;
+    grid-auto-rows: max-content auto;
     block-size: 100%;
 }
 
@@ -59,7 +61,7 @@
     color: var(--search-bar-placeholder-clr);
 }
 
-.search__bar__button {
+.search__bar__submit {
     display: flex;
     align-items: center;
 
@@ -72,7 +74,7 @@
 }
 
 /* 
-.search__bar__button:hover .search__bar__icon {
+.search__bar__submit:hover .search__bar__icon {
     --search-bar-icon-clr: var(--clr-neutral-100);
 } */
 
@@ -86,7 +88,7 @@
     display: grid;
 }
 
-.state__screen {
+.search__state__screen {
     justify-self: center;
     align-self: center;
 }
@@ -176,11 +178,11 @@
 }
 
 .movie__card__body:hover,
-.movie__card__body:has(.movie__card__action:focus),
+.movie__card__body:has(.movie__card__toggler:focus),
 .movie__card__body:has(.movie__card__link:hover),
 .movie__card__body:has(.movie__card__link:focus),
-.movie__card__action:hover ~ .movie__card__body,
-.movie__card__action:focus ~ .movie__card__body {
+.movie__card__toggler:hover ~ .movie__card__body,
+.movie__card__toggler:focus ~ .movie__card__body {
     opacity: 1;
 }
 
@@ -190,11 +192,11 @@
 }
 
 .movie__card__link:focus,
-.movie__card__action:focus {
+.movie__card__toggler:focus {
     outline: var(--movie-card-focus-outline);
 }
 
-.movie__card__action {
+.movie__card__toggler {
     align-self: start;
     justify-self: end;
 
@@ -203,7 +205,7 @@
     z-index: 9;
 }
 
-.movie__card__action:has(.icon__heart--filled) {
+.movie__card__toggler:has(.icon__heart--filled) {
     position: absolute;
     top: var(--movie-card-padding);
     right: var(--movie-card-padding);
@@ -229,7 +231,7 @@
     stroke: var(--icon-heart-outlined-disabled-clr);
 }
 
-.movie__card__supporting__text {
+.movie__card__text__content {
     align-self: end;
     justify-self: start;
     
@@ -250,7 +252,7 @@
     color: var(--clr-neutral-100);
 }
 
-.cards__container {
+.entertainment__cards__container {
     display: grid;
     grid-template-columns: repeat(auto-fill, var(--movie-card-width));
     justify-content: center;

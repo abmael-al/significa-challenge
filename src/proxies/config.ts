@@ -1,6 +1,6 @@
 export type Entertainment = 'movie' | 'series' | 'episode';
 
-export interface EntertainmentPresentation {
+export interface EntertainmentShortMap {
     Poster: string;
     Title: string;
     Type: Entertainment;
@@ -13,7 +13,7 @@ interface Rating {
     Value: string;
 }
 
-interface BasicEntertainmentDetails extends EntertainmentPresentation {
+interface EntertainmentMap extends EntertainmentShortMap {
     Response: 'True';
     Actors: string;
     Awards: string;
@@ -34,19 +34,20 @@ interface BasicEntertainmentDetails extends EntertainmentPresentation {
     imdbVotes: string;
 }
 
-export interface MovieDetails extends BasicEntertainmentDetails {
+export interface MovieMap extends EntertainmentMap {
     Type: 'movie';
     BoxOffice: string;
     DVD: string;
     Production: string;
 }
 
-interface UnsolicitedResponse {
-    Error: string;
+interface ErrorResponse {
     Response: 'False';
+    Error: string;
 }
 
-export type EntertainmentDetails = MovieDetails | UnsolicitedResponse;
+
+export type EntertainmentRequestMap = MovieMap | ErrorResponse;
 
 export interface DetailsRequestConfig {
     id: string;
@@ -60,13 +61,11 @@ export interface SearchConfig {
 
 interface SuccessfulSearch {
     Response: 'True';
-    Search: EntertainmentPresentation[];
+    Search: EntertainmentShortMap[];
     totalResults: string;
 }
 
-type UnsuccessfulSearch = UnsolicitedResponse;
-
-export type SearchResult = SuccessfulSearch | UnsuccessfulSearch;
+export type SearchResult = SuccessfulSearch | ErrorResponse;
 
 const BASE_URL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`;
 

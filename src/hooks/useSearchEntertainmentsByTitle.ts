@@ -1,5 +1,5 @@
 import { 
-    EntertainmentPresentation, 
+    EntertainmentShortMap, 
     SearchConfig,
     searchEntertainmentsByTitle 
 } from "../proxies";
@@ -7,7 +7,7 @@ import {
 import { useEffect, useState } from "react";
 
 export const useSearchEntertainmentsByTitle = (config: SearchConfig) => {
-    const [entertainments, setEntertainments] = useState<EntertainmentPresentation[] | undefined>(undefined);
+    const [entertainments, setEntertainments] = useState<EntertainmentShortMap[] | undefined>(undefined);
     const [isNotFound, setIsNotFound] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);

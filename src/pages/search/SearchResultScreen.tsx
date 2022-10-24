@@ -1,26 +1,27 @@
-import { useSearchEntertainmentsByTitle } from "../../hooks";
 import { SearchConfig } from "../../proxies";
-import { EntertainmentCardFeatures } from "./EntertainmentCardFeatures";
 
+import { EntertainmentCardFeatures } from "./EntertainmentCardFeatures";
 import { 
     LoadingAnimation, 
     NothingWasFound, 
     SomethingWentWrong 
 } from "../../components";
 
+import { useSearchEntertainmentsByTitle } from "../../hooks";
+
 interface SearchResultScreenProps {
-    searchConfig: SearchConfig;
+    config: SearchConfig;
 }
 
-export const SearchResultScreen = ({ searchConfig }: SearchResultScreenProps) => {
+export const SearchResultScreen = ({ config }: SearchResultScreenProps) => {
     const { 
         entertainments,
         isNotFound,
         isLoading,
         isError,
-    } = useSearchEntertainmentsByTitle(searchConfig);
+    } = useSearchEntertainmentsByTitle(config);
     
-    const noRequestWasMadeBefore = !entertainments && searchConfig.query === '';
+    const noRequestWasMadeBefore = !entertainments && config.query === '';
 
     return (
         // TODO: Rename to search result container
@@ -53,19 +54,19 @@ export const SearchResultScreen = ({ searchConfig }: SearchResultScreenProps) =>
 
             {isLoading && 
                 <LoadingAnimation 
-                    wrapperClass='state__screen' 
+                    wrapperClass='search__state__screen' 
                 />
             }
 
             {isNotFound &&
                 <NothingWasFound 
-                    wrapperClass='state__screen' 
+                    wrapperClass='search__state__screen' 
                 />
             }
 
             {isError &&
                 <SomethingWentWrong 
-                    wrapperClass='state__screen' 
+                    wrapperClass='search__state__screen' 
                 />
             }   
         </main>

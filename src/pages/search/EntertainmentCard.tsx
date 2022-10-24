@@ -1,19 +1,20 @@
-import { EntertainmentPresentation } from "../../proxies";
-import { navigateTo } from "../../App";
+import { EntertainmentShortMap } from "../../proxies";
 
 import { Link } from "react-router-dom";
 import { ReactComponent as IconHeart } from "../../assets/icons/icon-heart.svg";
 import { ProgressiveLazyPoster } from "./ProgressiveLazyPoster";
+
+import { navigateTo } from "../../App";
 
 interface ActionButtonProps {
     id: string;
     isBookmarked: boolean;
 }
 
-const ActionButton = ({ id, isBookmarked }: ActionButtonProps) => {
+const BookmarkToggle = ({ id, isBookmarked }: ActionButtonProps) => {
     return (
         <button
-            className='movie__card__action'
+            className='movie__card__toggler'
             data-bookmark-id={id}
             tabIndex={0}
         >
@@ -25,7 +26,7 @@ const ActionButton = ({ id, isBookmarked }: ActionButtonProps) => {
     )
 }
 
-interface EntertainmentCardProps extends EntertainmentPresentation {
+interface EntertainmentCardProps extends EntertainmentShortMap {
     isBookmarked: boolean;
 };
 
@@ -49,7 +50,7 @@ export const EntertainmentCard = ({
 
             <div>
                 {isBookmarked && 
-                    <ActionButton id={imdbID} isBookmarked={true} />
+                    <BookmarkToggle id={imdbID} isBookmarked={true} />
                 }
 
                 <div className='movie__card__body'>
@@ -59,10 +60,10 @@ export const EntertainmentCard = ({
                     />
 
                     {!isBookmarked && 
-                        <ActionButton id={imdbID} isBookmarked={false} />
+                        <BookmarkToggle id={imdbID} isBookmarked={false} />
                     }
 
-                    <div className='movie__card__supporting__text pointer-events-none'>
+                    <div className='movie__card__text__content pointer-events-none'>
                         <h3 className='movie__card__title'>{Title}</h3>
                         <p>{Year}</p>
                     </div>

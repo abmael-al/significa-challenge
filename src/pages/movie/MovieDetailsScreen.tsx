@@ -1,5 +1,5 @@
 import { ENTERTAINMENT_BOOKMARK_KEY } from '../../App';
-import { MovieDetails } from '../../proxies';
+import { MovieMap } from '../../proxies';
 
 import { ReactComponent as RottenTomatoesLogo } from '../../assets/logos/logo-rotten-tomatoes.svg';
 import { ReactComponent as IMDBLogo } from '../../assets/logos/logo-imdb.svg';
@@ -52,7 +52,7 @@ const ParagraphsExtracted = ({ by, from }: ParagraphsExtractedProps) => {
     )
 }
 
-type MovieDetailsScreenProps = MovieDetails;
+interface MovieDetailsScreenProps extends MovieMap {}
 
 export const MovieDetailsScreen = ({ 
     Actors,
@@ -69,7 +69,7 @@ export const MovieDetailsScreen = ({
     imdbID
 }: MovieDetailsScreenProps) => {
     return (
-        <main className='details__screen'>
+        <main className='details__container'>
             <section className='details__primary__info'>
                 <header className='details__header'>
                     <p className='details__header__item'>
@@ -81,7 +81,7 @@ export const MovieDetailsScreen = ({
                 
                 <h1 className='details__headline'>{Title}</h1>
                 
-                <div className='details__action'>
+                <div className='details__layout--column'>
                     <div className='rating__label'>
                         <div className='rating__label__thumbnail thumbnail--yellow'>
                             <IMDBLogo />
@@ -103,13 +103,13 @@ export const MovieDetailsScreen = ({
                     <BookmarkToggle itemId={imdbID} />
                 </div>
                 
-                <div className='details__subject__container'>
+                <div className='details__subjects__container'>
                     <div className='details__subject'>
                         <h5 className='details__subject__title'>Plot</h5>
                         <p>{Plot}</p>
                     </div> 
                     
-                    <div className='details__subject__wrapper'>
+                    <div className='details__subjects__wrapper'>
                         <div className='details__subject'>
                             <h5 className='details__subject__title'>Cast</h5>
                             <ul className='details__subject__content'>
@@ -134,9 +134,9 @@ export const MovieDetailsScreen = ({
                 </div>
             </section>
             
-            <figure className='poster__container'>
+            <figure className='details__poster__wrapper'>
                 <img 
-                    className='poster'
+                    className='details__poster'
                     src={Poster} 
                     alt={Title}
                     loading='lazy'

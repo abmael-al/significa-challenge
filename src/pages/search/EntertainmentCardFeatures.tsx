@@ -1,12 +1,12 @@
 import { ENTERTAINMENT_BOOKMARK_KEY } from '../../App';
-import { EntertainmentPresentation } from "../../proxies";
-
-import { useBookmark } from "../../hooks";
+import { EntertainmentShortMap } from "../../proxies";
 
 import { EntertainmentCard } from "./EntertainmentCard";
 
+import { useBookmark } from "../../hooks";
+
 interface EntertainmentCardFeaturesProps {
-    content: EntertainmentPresentation[];
+    content: EntertainmentShortMap[];
 }
 
 export const EntertainmentCardFeatures = ({ content }: EntertainmentCardFeaturesProps) => {
@@ -24,7 +24,7 @@ export const EntertainmentCardFeatures = ({ content }: EntertainmentCardFeatures
 
     return (
         <div
-            className='cards__container'
+            className='entertainment__cards__container'
             onClick={handleOnToggleInBookmark}
         >
             {content.map(ent => 

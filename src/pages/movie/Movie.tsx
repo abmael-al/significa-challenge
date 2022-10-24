@@ -1,7 +1,4 @@
-import { MovieDetails, Entertainment } from '../../proxies';
-
-import { useParams, Link,  } from 'react-router-dom'
-import { useEntertainmentDetails } from '../../hooks';
+import { MovieMap } from '../../proxies';
 
 import { MovieDetailsScreen } from './MovieDetailsScreen';
 import { ReactComponent as IconArrow } from '../../assets/icons/icon-arrow.svg';
@@ -12,31 +9,32 @@ import {
     EntertainmentNotFound 
 } from '../../components';
 
+import { useParams, Link } from 'react-router-dom'
+import { useEntertainmentDetails } from '../../hooks';
+
 import './index.css'
 
 export const Movie = () => {
-    // TODO: Delete this redudant variable.
-    const ENTERTAINMENT_TYPE: Entertainment = 'movie';
     const { id } = useParams();
     const { 
         details, 
         isNotFound, 
         isLoading, 
         isError, 
-    } = useEntertainmentDetails<MovieDetails>(
-        { id: id as string, type: ENTERTAINMENT_TYPE }
+    } = useEntertainmentDetails<MovieMap>(
+        { id: id as string, type: 'movie' }
     );
         
     return (
         <>
             <section>
-                <GeneralContainer wrapperClass='details__container'>
-                    {/* TODO: Rename to "nav" */}
-                    <nav className='nav__bar'>
+                <GeneralContainer 
+                    wrapperClass='details__screen__container'
+                >
+                    <nav className='nav'>
                         <Link 
                             to='/'
-                            // TODO: Rename to "nav__back__link"
-                            className='nav__bar__back__link'
+                            className='nav__back__link'
                         >
                             <IconArrow />
                         </Link>

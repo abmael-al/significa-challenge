@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { 
     DetailsRequestConfig, 
-    EntertainmentDetails,
+    EntertainmentRequestMap,
     getEntertainmentDetails 
 } from "../proxies"
 
-export const useEntertainmentDetails = <T extends EntertainmentDetails>(config: DetailsRequestConfig) => {
+export const useEntertainmentDetails = <T extends EntertainmentRequestMap>(config: DetailsRequestConfig) => {
     const [details, setDetails] = useState<T | undefined>(undefined);
     const [isNotFound, setIsNotFound] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
