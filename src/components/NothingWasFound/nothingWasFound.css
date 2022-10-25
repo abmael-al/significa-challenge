@@ -6,7 +6,7 @@
 }
 
 .nwf__illustration {
-    inline-size: 4.75rem;
+    inline-size: 4rem;
 }
 
 .nwf__illustration .target--fill {
@@ -21,9 +21,14 @@
 .nwf__title {
     margin-block-end: 0.5rem;
 
-    font-size: var(--fs-heading-200);
-    font-family: var(--ff-heading-200);
-    font-weight: var(--fw-heading-200);
-    letter-spacing: var(--tracking-heading-200);
+    font-size: var(--fs-heading-100);
+    font-family: var(--ff-heading-100);
+    font-weight: var(--fw-heading-100);
+    letter-spacing: var(--tracking-heading-100);
+    line-height: var(--leading-heading-100);
     color: var(--clr-neutral-100);
+}
+
+.nwf__supporting__text {
+    line-height: var(--leading-body);
 }

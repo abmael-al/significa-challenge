@@ -13,7 +13,7 @@ export const NothingWasFound = ({ wrapperClass }: NothingWasFoundProps) => {
             </div>
             <div className='nwf__body'>
                 <h1 className='nwf__title'>What're you looking for?</h1>
-                <p>We searched far and wide. Unfortunately, no results were found.</p>
+                <p className='nwf__supporting__text'>We searched far and wide. Unfortunately, no results were found.</p>
             </div>
         </div>
     )

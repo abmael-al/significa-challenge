@@ -13,7 +13,7 @@ export const SomethingWentWrong = ({ wrapperClass }: SomethingWentWrongProps) =>
             </div>
             <div className={`sww__body ${wrapperClass}`}>
                 <h1 className='sww__title'>Well, this is awkward</h1>
-                <p>Please, try again. If the error persists, send us a report or come back later.</p>
+                <p className='sww__supporting__text'>Please, try again. If the error persists, send us a report or come back later.</p>
             </div>
         </div>
     )

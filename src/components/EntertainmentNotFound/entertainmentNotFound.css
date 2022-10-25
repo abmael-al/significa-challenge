@@ -19,4 +19,5 @@
 
 .enf__supporting__text {
     max-inline-size: 36ch;
+    line-height: var(--leading-body);
 }
