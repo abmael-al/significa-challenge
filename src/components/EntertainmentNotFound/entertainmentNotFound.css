@@ -17,6 +17,17 @@
     text-align: center;
 }
 
+.enf__title {
+    margin-block-end: 0.5rem;
+
+    font-size: var(--fs-heading-100);
+    font-family: var(--ff-heading-100);
+    font-weight: var(--fw-heading-100);
+    letter-spacing: var(--tracking-heading-100);
+    line-height: var(--leading-heading-100);
+    color: var(--clr-neutral-100);
+}
+
 .enf__supporting__text {
     max-inline-size: 36ch;
     line-height: var(--leading-body);
