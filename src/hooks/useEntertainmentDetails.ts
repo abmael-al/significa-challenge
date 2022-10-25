@@ -15,7 +15,7 @@ export const useEntertainmentDetails = <T extends EntertainmentRequestMap>(confi
         setIsLoading(true);
         getEntertainmentDetails<T>(config)
             .then(result => {
-                if(result.Response === 'True') setDetails(result);
+                if(result.Response === 'True') setDetails(result as T);
                 else if (result.Response === 'False') setIsNotFound(true);
             })
             .catch(() => setIsError(true))

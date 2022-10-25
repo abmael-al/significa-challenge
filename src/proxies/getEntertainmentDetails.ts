@@ -1,6 +1,7 @@
 import {
     DetailsRequestConfig,
     EntertainmentRequestMap,
+    EntertainmentRequestMapOrError,
     getEntertainmentDetailsRequestUrl 
 } from "./";
 
@@ -10,5 +11,5 @@ export const getEntertainmentDetails = async <T extends EntertainmentRequestMap>
     const url = getEntertainmentDetailsRequestUrl(config);
     const { data } = await fetch<T>(url);
 
-    return data;
+    return (data as EntertainmentRequestMapOrError);
 }

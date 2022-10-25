@@ -46,8 +46,9 @@ interface ErrorResponse {
     Error: string;
 }
 
+export type EntertainmentRequestMap = MovieMap;
 
-export type EntertainmentRequestMap = MovieMap | ErrorResponse;
+export type EntertainmentRequestMapOrError = EntertainmentRequestMap | ErrorResponse;
 
 export interface DetailsRequestConfig {
     id: string;
