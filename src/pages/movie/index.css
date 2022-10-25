@@ -94,13 +94,12 @@
 }
 
 .details__headline {
-    max-inline-size: 12ch;
     margin-block-end: var(--white-space-300);
     
-    /* display: -webkit-box;
-    -webkit-line-clamp: 4;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;  
-    overflow: hidden; */
+    overflow: hidden;
 
     font-size: var(--fs-heading-300);
     font-family: var(--ff-heading-300);
