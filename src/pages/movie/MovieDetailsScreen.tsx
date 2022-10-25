@@ -106,7 +106,7 @@ export const MovieDetailsScreen = ({
                 <div className='details__subjects__container'>
                     <div className='details__subject'>
                         <h5 className='details__subject__title'>Plot</h5>
-                        <p>{Plot}</p>
+                        <p className='line__height--body'>{Plot}</p>
                     </div> 
                     
                     <div className='details__subjects__wrapper'>

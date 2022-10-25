@@ -9,7 +9,6 @@ export function useBookmark(key: string) {
                 bookmark.delete(id)
             } else {
                 bookmark.add(id);
-                
             }
 
             setBookmarkItems(Array.from(bookmark));

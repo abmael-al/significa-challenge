@@ -116,6 +116,7 @@
     font-family: var(--ff-heading-200);
     font-weight: var(--fw-heading-200);
     letter-spacing: var(--tracking-heading-200);
+    line-height: var(--leading-heading-200);
     color: var(--clr-neutral-100);
 }
 
@@ -191,7 +192,7 @@
     opacity: 1;
 }
 
-.movie__card__link:focus,
+.movie__card:has(.movie__card__link:focus),
 .movie__card__toggler:focus {
     outline: var(--movie-card-focus-outline);
 }
@@ -249,6 +250,7 @@
     font-family: var(--ff-heading-100);
     font-weight: var(--fw-heading-100);
     letter-spacing: var(--tracking-heading-100);
+    line-height: var(--leading-heading-100);
     color: var(--clr-neutral-100);
 }
 
