@@ -13,13 +13,19 @@
     --movie-card-border-radius: 0.25rem;
     --movie-card-focus-outline: 1px solid var(--clr-neutral-100);
     
-    --movie-card-body-background-clr: hsl( var(--raw-clr-neutral-700), 0.75 );
-    --movie-card-body-transition: 0.5s cubic-bezier(0.37, 0, 0.63, 1);
+    --body-background-hover-devices: hsl(0 0% 0% / 0.75);
+    --body-transition-hover-devices: 0.5s cubic-bezier(0.37, 0, 0.63, 1);
+    
+    --body-background-not-hover-devices: 
+        linear-gradient(
+            hsl(0 0% 0% / 0.05),
+            hsl(0 0% 0% / 1)
+        );
     
     --poster-loaded-animation: fade-in cubic-bezier(0.12, 0, 0.39, 0) 0.1s;
 
     --icon-heart-filled-clr: var(--clr-neutral-100);
-    --icon-heart-filled-drop-shadow: 0px 2px 4px rgb(0 0 0 / 0.4);
+    --icon-heart-filled-drop-shadow: 0px 2px 4px rgb(0 0 0 / 0.5);
     --icon-heart-outlined-active-clr: var(--clr-neutral-100);
     --icon-heart-outlined-disabled-clr: var(--clr-neutral-500);
 }
@@ -165,12 +171,39 @@
 
     position: absolute;
     inset: 0;
-    
-    opacity: 0;
-    transition: opacity var(--movie-card-body-transition);
-    cursor: pointer;
 
-    background-color: var(--movie-card-body-background-clr);
+    background: var(--body-background-not-hover-devices);
+}
+
+@media (hover) {
+    .movie__card__body {
+        opacity: 0;
+        transition: opacity var(--body-transition-hover-devices);
+        cursor: pointer;
+
+        background: var(--body-background-hover-devices);
+    }
+    
+    .movie__card__body:hover,
+    .movie__card__body:has(.movie__card__toggler:focus),
+    .movie__card__body:has(.movie__card__link:hover),
+    .movie__card__body:has(.movie__card__link:focus),
+    .movie__card__toggler:hover ~ .movie__card__body,
+    .movie__card__toggler:focus ~ .movie__card__body {
+        opacity: 1;
+    }
+
+    .movie__card:has(.poster--fallback) .movie__card__body {
+        --body-transition-hover-devices: none;
+        --body-background-hover-devices: hsl(0 0% 0% / 0.5);
+        
+        opacity: 1;
+    }
+
+    .movie__card:has(.movie__card__link:focus),
+    .movie__card__toggler:focus {
+        outline: var(--movie-card-focus-outline);
+    }
 }
 
 .movie__card__link {
@@ -178,41 +211,18 @@
     inset: 0;
 }
 
-.movie__card__body:hover,
-.movie__card__body:has(.movie__card__toggler:focus),
-.movie__card__body:has(.movie__card__link:hover),
-.movie__card__body:has(.movie__card__link:focus),
-.movie__card__toggler:hover ~ .movie__card__body,
-.movie__card__toggler:focus ~ .movie__card__body {
-    opacity: 1;
-}
-
-.movie__card:has(.poster--fallback) .movie__card__body {
-    --movie-card-body-transition: none;
-    opacity: 1;
-}
-
-.movie__card:has(.movie__card__link:focus),
-.movie__card__toggler:focus {
-    outline: var(--movie-card-focus-outline);
-}
-
 .movie__card__toggler {
-    align-self: start;
-    justify-self: end;
-
     block-size: 1.5rem;
     
-    z-index: 9;
-}
-
-.movie__card__toggler:has(.icon__heart--filled) {
     position: absolute;
     top: var(--movie-card-padding);
     right: var(--movie-card-padding);
+    z-index: 9;
 }
 
-.icon__heart--filled {
+.icon__heart--filled,
+.icon__heart--outlined--active,
+.icon__heart--outlined--disabled {
     filter: drop-shadow(var(--icon-heart-filled-drop-shadow));
 }
 
@@ -242,7 +252,7 @@
 
 .movie__card__title {
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;  
     overflow: hidden;
 
