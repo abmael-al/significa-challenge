@@ -6,12 +6,12 @@ import { ProgressiveLazyPoster } from "./ProgressiveLazyPoster";
 
 import { navigateTo } from "../../App";
 
-interface ActionButtonProps {
+interface BookmarkToggleProps {
     id: string;
     isBookmarked: boolean;
 }
 
-const BookmarkToggle = ({ id, isBookmarked }: ActionButtonProps) => {
+const BookmarkToggle = ({ id, isBookmarked }: BookmarkToggleProps) => {
     return (
         <button
             className='movie__card__toggler'

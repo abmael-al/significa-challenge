@@ -7,7 +7,7 @@ interface GeneralContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 export const GeneralContainer = ({ children, wrapperClass, ...rest }: GeneralContainerProps) => {
     return (
         <div 
-            className={`general__container ${wrapperClass}`} 
+            className={`general__container ${wrapperClass || ''}`} 
             { ...rest }
         >
             {children}
