@@ -4,10 +4,12 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    
+    font-size: var(--fs-200);
 }
 
 .sww__illustration {
-    inline-size: 4rem;
+    inline-size: 3.5rem;
     block-size: max-content;
 }
 
@@ -33,4 +35,14 @@
 
 .sww__supporting__text {
     line-height: var(--leading-body);
+}
+
+@media (min-width: 48em) {
+    .sww__container {
+        font-size: var(--fs-body);
+    }
+
+    .sww__illustration {
+        inline-size: 4rem;
+    }
 }
