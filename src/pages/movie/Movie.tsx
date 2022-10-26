@@ -24,6 +24,7 @@ export const Movie = () => {
     } = useEntertainmentDetails<MovieMap>(
         { id: id as string, type: 'movie' }
     );
+    // TODO: improve intellisense for useEntertainmentDetails hook 
         
     return (
         <>

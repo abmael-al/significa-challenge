@@ -28,7 +28,7 @@
     --fs-300: 1rem;
     --fs-400: 1.125rem;
     --fs-500: 1.5rem;
-    --fs-900: 5rem;
+    --fs-900: 3rem;
 
     --tracking-100: 0.16px;
     --tracking-200: 0.2px;
@@ -67,9 +67,21 @@
     --gap: 0.5rem;
 }
 
+@media (min-width: 30em) {
+    :root {
+        --fs-900: 3.25rem;
+    }
+}
+
 @media (min-width: 48em) {
     :root {
         --fs-400: 1.25rem;
+    }
+}
+
+@media (min-width: 64em) {
+    :root {
+        --fs-900: 5rem;
     }
 }
 

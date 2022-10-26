@@ -70,6 +70,15 @@ export const MovieDetailsScreen = ({
 }: MovieDetailsScreenProps) => {
     return (
         <main className='details__container'>
+            <figure className='details__poster__wrapper'>
+                <img 
+                    className='details__poster'
+                    src={Poster} 
+                    alt={Title}
+                    loading='lazy'
+                />
+            </figure>
+
             <section className='details__primary__info'>
                 <header className='details__header'>
                     <p className='details__header__item'>
@@ -133,15 +142,6 @@ export const MovieDetailsScreen = ({
                     </div>
                 </div>
             </section>
-            
-            <figure className='details__poster__wrapper'>
-                <img 
-                    className='details__poster'
-                    src={Poster} 
-                    alt={Title}
-                    loading='lazy'
-                />
-            </figure>
         </main>
     )
 } 
