@@ -8,27 +8,33 @@ import {
 } from "../../components";
 
 import { useSearchEntertainmentsByTitle } from "../../hooks";
+import { useEffect } from "react";
 
 interface SearchResultScreenProps {
     config: SearchConfig;
+    dispatchNumberOfPages(n: number): void;
 }
 
-export const SearchResultScreen = ({ config }: SearchResultScreenProps) => {
+export const SearchResultScreen = ({ config, dispatchNumberOfPages }: SearchResultScreenProps) => {
     const { 
-        entertainments,
+        search,
         isNotFound,
         isLoading,
         isError,
     } = useSearchEntertainmentsByTitle(config);
     
-    const noRequestWasMadeBefore = !entertainments && config.query === '';
+    const noRequestWasMadeBefore = !search.results && config.query === '';
+
+    useEffect(() => {
+        dispatchNumberOfPages(search.pages);
+    }, [search.pages]);
 
     return (
         // TODO: Rename to search result container
         <main className="search__result__screen">
-            {entertainments &&
+            {search.results &&
                 <EntertainmentCardFeatures 
-                    content={entertainments}
+                    content={search.results}
                 />
             }
 

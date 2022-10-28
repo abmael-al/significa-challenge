@@ -53,11 +53,13 @@ export type EntertainmentRequestMapOrError = EntertainmentRequestMap | ErrorResp
 export interface DetailsRequestConfig {
     id: string;
     type: Entertainment;
+    plot?: 'short' | 'full';
 }
 
 export interface SearchConfig {
     query: string;
     type: Entertainment;
+    page?: number;
 }
 
 interface SuccessfulSearch {
@@ -70,6 +72,10 @@ export type SearchResult = SuccessfulSearch | ErrorResponse;
 
 const BASE_URL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`;
 
-export const getEntertainmentSearchRequestUrl = ({ query, type }: SearchConfig) => `${BASE_URL}&s=${query}&type=${type}`;
+export const getEntertainmentSearchRequestUrl = 
+    ({ query, type, page = 1 }: SearchConfig) => 
+        `${BASE_URL}&s=${query}&page=${page}&type=${type}`;
 
-export const getEntertainmentDetailsRequestUrl = ({ id, type }: DetailsRequestConfig) => `${BASE_URL}&i=${id}&type=${type}`;
+export const getEntertainmentDetailsRequestUrl = 
+    ({ id, type, plot = 'full' }: DetailsRequestConfig) => 
+        `${BASE_URL}&i=${id}&type=${type}&plot=${plot}`;
