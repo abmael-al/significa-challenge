@@ -296,3 +296,33 @@
 
     padding-block: 2rem;
 }
+
+.paginate__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    
+    cursor: pointer;
+}
+
+.paginate__page__link {
+    padding: 0.25rem;
+    background-color: transparent;
+    border: 1px solid var(--clr-neutral-500);
+}
+
+.paginate__active__link {
+    padding: 0.5rem;
+}
+
+.paginate__previous__link,
+.paginate__next__link {
+    padding: 1rem;
+    border: 1px solid var(--clr-neutral-500);
+}
+
+.paginate__break__link {
+    padding: 1rem;
+    border: 1px solid var(--clr-neutral-500);
+}

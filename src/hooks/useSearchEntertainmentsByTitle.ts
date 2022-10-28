@@ -1,13 +1,13 @@
 import { 
     EntertainmentShortMap, 
     SearchConfig,
-    searchEntertainmentsByTitle 
+    searchEntertainmentsByTitle,
+    MAX_NUMBER_OF_RESULTS_PER_PAGE
 } from "../proxies";
 
 import { useEffect, useState } from "react";
 
 const calcNumberOfPages = (totalResults: string) => {
-    const MAX_NUMBER_OF_RESULTS_PER_PAGE = 10;
     return Math.ceil(
         Number.parseInt(totalResults) / MAX_NUMBER_OF_RESULTS_PER_PAGE
     );

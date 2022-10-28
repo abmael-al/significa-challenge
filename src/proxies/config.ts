@@ -67,8 +67,10 @@ interface SuccessfulSearch {
     Search: EntertainmentShortMap[];
     totalResults: string;
 }
-
+ 
 export type SearchResult = SuccessfulSearch | ErrorResponse;
+
+export const MAX_NUMBER_OF_RESULTS_PER_PAGE = 10;
 
 const BASE_URL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`;
 
