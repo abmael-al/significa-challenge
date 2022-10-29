@@ -6,6 +6,9 @@ import { ENTERTAINMENT_TYPE } from '../../App';
 import { SearchResultScreen } from './SearchResultScreen';
 import { GeneralContainer } from "../../components"
 import { ReactComponent as Magnifier } from '../../assets/icons/icon-magnifier.svg';
+import { ReactComponent as ArrowLeft } from '../../assets/icons/icon-arrow-left.svg';
+import { ReactComponent as ArrowRight } from '../../assets/icons/icon-arrow-right.svg';
+
 import ReactPaginate from 'react-paginate';
 
 import './index.css';
@@ -17,25 +20,25 @@ interface PaginationProps {
 }
 
 const Paginate = ({ pageCount, forcePage, onPageChange }: PaginationProps) => {
-    {/* I abstracted it away to keep only the necessary props to 
-        make the component work visible, so that the main logic 
-        isn't obscured by a bunch of style-related props. */}
+    {/* I abstracted it away to only keep visible the necessary props to 
+        make the component work, so that the main logic 
+        isn't obscured by a ream of style-related props. */}
     return (
         <ReactPaginate
             pageCount={pageCount}
             forcePage={forcePage}
             onPageChange={onPageChange}
-            
             containerClassName='paginate__container'
-            activeLinkClassName='paginate__active__link'
-            pageLinkClassName='paginate__page__link'
-            previousLinkClassName='paginate__previous__link'
-            nextLinkClassName='paginate__next__link'
-            breakLinkClassName='paginate__break__link'
-            breakLabel='...'
-            nextLabel='>'
-            previousLabel='<'
-            pageRangeDisplayed={5}
+            activeLinkClassName='link--active'
+            pageLinkClassName='paginate__link'
+            previousLinkClassName='paginate__link'
+            nextLinkClassName='paginate__link'
+            disabledLinkClassName='link--disabled'
+            breakLinkClassName='paginate__link'
+            previousLabel={<ArrowLeft className='paginate__label' />}
+            nextLabel={<ArrowRight className='paginate__label'  />}
+            breakLabel={'...'}
+            pageRangeDisplayed={3}
             renderOnZeroPageCount={() => null}
         />
     )
