@@ -8,13 +8,14 @@
     --clr-neutral-700:hsl(206, 21%, 13%);
     --clr-neutral-600:hsl(214, 18%, 25%);
     --clr-neutral-500:hsl(205, 13%, 54%);
+    --clr-neutral-200:hsl(200, 10%, 94%);
     --clr-neutral-100:hsl(0, 0%, 100%);
 
     --clr-accent-100:hsl(174, 62%, 47%);
     --clr-accent-200:hsl(35, 100%, 55%);
     --clr-accent-300:hsl(0, 100%, 63%);
-    
-    --raw-clr-neutral-700: 206, 21%, 13%;
+
+    --clr-transparent-100: hsl(214 18% 25% / 0.2);
 
     /* typography */
     --ff-primary-fallback: sans-serif;
