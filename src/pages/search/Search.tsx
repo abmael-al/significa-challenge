@@ -28,7 +28,7 @@ const Paginate = ({ pageCount, forcePage, onPageChange }: PaginationProps) => {
             pageCount={pageCount}
             forcePage={forcePage}
             onPageChange={onPageChange}
-            containerClassName='paginate__container'
+            containerClassName='paginate'
             activeLinkClassName='link--active'
             pageLinkClassName='paginate__link'
             previousLinkClassName='paginate__link'
@@ -117,11 +117,13 @@ export const Search = () => {
                     dispatchNumberOfPages={dispatchNumberOfPages}
                 />
 
-                <Paginate
-                    pageCount={numberOfPages}
-                    forcePage={currentPageOffset}
-                    onPageChange={handleOnPageChange}
-                />
+                <div className='paginate__container'>
+                    <Paginate
+                        pageCount={numberOfPages}
+                        forcePage={currentPageOffset}
+                        onPageChange={handleOnPageChange}
+                    />
+                </div>
             </GeneralContainer>
         </section>
     )

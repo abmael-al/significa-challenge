@@ -8,11 +8,11 @@ import './Header.css';
 export const Header = () => {
     return (
         <>
-            <header className="header">
-                <GeneralContainer>
+            <GeneralContainer>
+                <header className="header">
                     <Logo />
-                </GeneralContainer>
-            </header>
+                </header>
+            </GeneralContainer>
             <Outlet />
         </>
     )

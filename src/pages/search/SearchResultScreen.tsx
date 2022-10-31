@@ -30,8 +30,7 @@ export const SearchResultScreen = ({ config, dispatchNumberOfPages }: SearchResu
     }, [search.pages]);
 
     return (
-        // TODO: Rename to search result container
-        <main className="search__result__screen">
+        <main className="search__result__container">
             {search.results &&
                 <EntertainmentCardFeatures 
                     content={search.results}
