@@ -5,7 +5,7 @@ import {
     getEntertainmentDetails 
 } from "../proxies"
 
-export const useEntertainmentDetails = <T extends EntertainmentRequestMap>(config: DetailsRequestConfig) => {
+export const useEntertainmentDetails = <T extends EntertainmentRequestMap>(config: DetailsRequestConfig<T>) => {
     const [details, setDetails] = useState<T | undefined>(undefined);
     const [isNotFound, setIsNotFound] = useState(false);
     const [isLoading, setIsLoading] = useState(false);

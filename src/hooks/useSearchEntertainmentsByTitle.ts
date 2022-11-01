@@ -2,24 +2,18 @@ import {
     EntertainmentShortMap, 
     SearchConfig,
     searchEntertainmentsByTitle,
-    MAX_NUMBER_OF_RESULTS_PER_PAGE
+    getTotalNumberOfPages
 } from "../proxies";
 
 import { useEffect, useState } from "react";
 
-const calcNumberOfPages = (totalResults: string) => {
-    return Math.ceil(
-        Number.parseInt(totalResults) / MAX_NUMBER_OF_RESULTS_PER_PAGE
-    );
-}
-
-interface Search {    
+interface SearchState {    
     results: EntertainmentShortMap[] | undefined;
     pages: number;
 }
 
 export const useSearchEntertainmentsByTitle = (config: SearchConfig) => {
-    const [search, setSearch] = useState<Search>({ results: undefined, pages: 0 });
+    const [search, setSearch] = useState<SearchState>({ results: undefined, pages: 0 });
     const [isNotFound, setIsNotFound] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -44,7 +38,7 @@ export const useSearchEntertainmentsByTitle = (config: SearchConfig) => {
                 if(res.Response === 'True') {
                     setSearch({ 
                         results: res.Search, 
-                        pages: calcNumberOfPages(res.totalResults)
+                        pages: getTotalNumberOfPages(res.totalResults)
                     });
                 } else if(res.Response === 'False') {
                     setIsNotFound(true);

@@ -8,11 +8,6 @@ export interface EntertainmentShortMap {
     imdbID: string;
 }
 
-interface Rating {
-    Source: string;
-    Value: string;
-}
-
 interface EntertainmentMap extends EntertainmentShortMap {
     Response: 'True';
     Actors: string;
@@ -34,6 +29,11 @@ interface EntertainmentMap extends EntertainmentShortMap {
     imdbVotes: string;
 }
 
+interface Rating {
+    Source: string;
+    Value: string;
+}
+
 export interface MovieMap extends EntertainmentMap {
     Type: 'movie';
     BoxOffice: string;
@@ -50,15 +50,17 @@ export type EntertainmentRequestMap = MovieMap;
 
 export type EntertainmentRequestMapOrError = EntertainmentRequestMap | ErrorResponse;
 
-export interface DetailsRequestConfig {
+export interface DetailsRequestConfig<T extends EntertainmentRequestMap> {
     id: string;
-    type: Entertainment;
+    type: GetType<T>;
     plot?: 'short' | 'full';
 }
 
+type GetType<T> = T extends { Type: string } ? T['Type'] : never;
+
 export interface SearchConfig {
     query: string;
-    type: Entertainment;
+    type: string;
     page?: number;
 }
 
@@ -70,14 +72,24 @@ interface SuccessfulSearch {
  
 export type SearchResult = SuccessfulSearch | ErrorResponse;
 
-export const MAX_NUMBER_OF_RESULTS_PER_PAGE = 10;
-
 const BASE_URL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`;
 
 export const getEntertainmentSearchRequestUrl = 
-    ({ query, type, page = 1 }: SearchConfig) => 
-        `${BASE_URL}&s=${query}&page=${page}&type=${type}`;
+    ({ query, type, page = 1 }: SearchConfig) => {
+        return `${BASE_URL}&s=${query}&page=${page}&type=${type}`;
+    }
 
 export const getEntertainmentDetailsRequestUrl = 
-    ({ id, type, plot = 'full' }: DetailsRequestConfig) => 
-        `${BASE_URL}&i=${id}&type=${type}&plot=${plot}`;
+    <T extends EntertainmentRequestMap>(
+        { id, type, plot = 'full' }: DetailsRequestConfig<T>
+    ) => {
+        return `${BASE_URL}&i=${id}&type=${type}&plot=${plot}`;
+    }
+        
+export const getTotalNumberOfPages = (totalResults: string) => {
+    const MAX_NUMBER_OF_RESULTS_PER_PAGE = 10;
+
+    return Math.ceil(
+        Number.parseInt(totalResults) / MAX_NUMBER_OF_RESULTS_PER_PAGE
+    );
+}
