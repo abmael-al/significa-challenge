@@ -299,7 +299,7 @@
     color: var(--clr-neutral-100);
 }
 
-.entertainment__cards__container {
+.cards__container {
     --cards-container-padding: 2rem;
     --cards-gap: 1.25rem;
 
@@ -312,7 +312,8 @@
 }
 
 @media (min-width: 64em) {
-    .entertainment__cards__container {
+    .cards__container,
+    .search__state__screen.state__screen--loading {
         --implicity-rows: 2;
         
         /* Preventing layout shift in larger screens */
@@ -328,7 +329,7 @@
 /* PAGINATE */
 .paginate__container {
     block-size: var(--pg-link-height);
-    margin-bottom: 5rem;
+    margin-block-end: 5rem;
 }
 
 .paginate {

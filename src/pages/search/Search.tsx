@@ -1,15 +1,14 @@
-import { useCallback, useState } from 'react';
-import { useSearchParams } from 'react-router-dom'
-
 import { ENTERTAINMENT_TYPE } from '../../App';
 
+import ReactPaginate from 'react-paginate';
 import { SearchResultScreen } from './SearchResultScreen';
 import { GeneralContainer } from "../../components"
 import { ReactComponent as Magnifier } from '../../assets/icons/icon-magnifier.svg';
 import { ReactComponent as ArrowLeft } from '../../assets/icons/icon-arrow-left.svg';
 import { ReactComponent as ArrowRight } from '../../assets/icons/icon-arrow-right.svg';
 
-import ReactPaginate from 'react-paginate';
+import { useCallback, useState } from 'react';
+import { useSearchParams } from 'react-router-dom'
 
 import './index.css';
 
@@ -24,23 +23,27 @@ const Paginate = ({ pageCount, forcePage, onPageChange }: PaginationProps) => {
         make the component work, so that the main logic 
         isn't obscured by a ream of style-related props. */}
     return (
-        <ReactPaginate
-            pageCount={pageCount}
-            forcePage={forcePage}
-            onPageChange={onPageChange}
-            containerClassName='paginate'
-            activeLinkClassName='link--active'
-            pageLinkClassName='paginate__link'
-            previousLinkClassName='paginate__link'
-            nextLinkClassName='paginate__link'
-            disabledLinkClassName='link--disabled'
-            breakLinkClassName='paginate__link'
-            previousLabel={<ArrowLeft className='paginate__label' />}
-            nextLabel={<ArrowRight className='paginate__label'  />}
-            breakLabel={'...'}
-            pageRangeDisplayed={3}
-            renderOnZeroPageCount={() => null}
-        />
+        <div 
+            className={pageCount > 0 ? 'paginate__container' : ''}
+        >
+            <ReactPaginate
+                pageCount={pageCount}
+                forcePage={forcePage}
+                onPageChange={onPageChange}
+                containerClassName='paginate'
+                activeLinkClassName='link--active'
+                pageLinkClassName='paginate__link'
+                previousLinkClassName='paginate__link'
+                nextLinkClassName='paginate__link'
+                disabledLinkClassName='link--disabled'
+                breakLinkClassName='paginate__link'
+                previousLabel={<ArrowLeft className='paginate__label' />}
+                nextLabel={<ArrowRight className='paginate__label'  />}
+                breakLabel={'...'}
+                pageRangeDisplayed={3}
+                renderOnZeroPageCount={() => null}
+            />
+        </div>
     )
 }
 
@@ -59,8 +62,6 @@ export const Search = () => {
         type: ENTERTAINMENT_TYPE
     }
     
-    const currentPageOffset = numberOfPages !== 0 ? search.page - 1 : -1;
-
     const handleOnSearchRequest = 
         (event: React.FormEvent<HTMLFormElement>) => {
             event.preventDefault();
@@ -87,6 +88,8 @@ export const Search = () => {
     const dispatchNumberOfPages = useCallback(
         (n: number) => setNumberOfPages(n), []
     );
+
+    const currentPageOffset = numberOfPages !== 0 ? search.page - 1 : -1;
 
     return (
         <section>
@@ -117,13 +120,11 @@ export const Search = () => {
                     dispatchNumberOfPages={dispatchNumberOfPages}
                 />
 
-                <div className='paginate__container'>
-                    <Paginate
-                        pageCount={numberOfPages}
-                        forcePage={currentPageOffset}
-                        onPageChange={handleOnPageChange}
-                    />
-                </div>
+                <Paginate
+                    pageCount={numberOfPages}
+                    forcePage={currentPageOffset}
+                    onPageChange={handleOnPageChange}
+                />
             </GeneralContainer>
         </section>
     )
