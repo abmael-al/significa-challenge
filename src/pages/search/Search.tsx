@@ -8,7 +8,7 @@ import { ReactComponent as ArrowLeft } from '../../assets/icons/icon-arrow-left.
 import { ReactComponent as ArrowRight } from '../../assets/icons/icon-arrow-right.svg';
 
 import { useCallback, useState } from 'react';
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useLocation } from 'react-router-dom'
 
 import './index.css';
 
@@ -19,9 +19,17 @@ interface PaginationProps {
 }
 
 const Paginate = ({ pageCount, forcePage, onPageChange }: PaginationProps) => {
-    {/* I abstracted it away to only keep visible the necessary props to 
-        make the component work, so that the main logic 
-        isn't obscured by a ream of style-related props. */}
+    const location = useLocation();
+
+    const buildHref = (pageIndex: number, pageCount: number) => {
+        const _FLAG = /page=[0-9]+/;
+        const _replaceValue = `page=${pageIndex}`;
+        
+        return pageIndex >= 1 && pageIndex <= pageCount 
+            ? `/${location.search.replace(_FLAG, _replaceValue)}`
+            : '#'
+    }
+
     return (
         <div 
             className={pageCount > 0 ? 'paginate__container' : ''}
@@ -30,6 +38,7 @@ const Paginate = ({ pageCount, forcePage, onPageChange }: PaginationProps) => {
                 pageCount={pageCount}
                 forcePage={forcePage}
                 onPageChange={onPageChange}
+                hrefBuilder={buildHref}
                 containerClassName='paginate'
                 activeLinkClassName='link--active'
                 pageLinkClassName='paginate__link'
@@ -55,13 +64,13 @@ export const Search = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [numberOfPages, setNumberOfPages] = useState(0);
     const [textInput, setTextInput] = useState('');
-    
+
     const search = {
         query: searchParams.get('query') || '',
         page: Number.parseInt(searchParams.get('page') || '0'),
         type: ENTERTAINMENT_TYPE
     }
-    
+
     const handleOnSearchRequest = 
         (event: React.FormEvent<HTMLFormElement>) => {
             event.preventDefault();
