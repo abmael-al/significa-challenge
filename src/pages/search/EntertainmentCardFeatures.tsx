@@ -24,7 +24,7 @@ export const EntertainmentCardFeatures = ({ content }: EntertainmentCardFeatures
 
     return (
         <div
-            className='entertainment__cards__container'
+            className='cards__container'
             onClick={handleOnToggleInBookmark}
         >
             {content.map(ent => 

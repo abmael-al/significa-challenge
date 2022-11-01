@@ -7,14 +7,14 @@
     --poster-border-radius: 0.5rem;
     --poster-box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
-    /* BOOKMARK TOGGLE */
-    --bookmark-toggle-padding: 0.5em;
-    --bookmark-toggle-border: 1px solid var(--clr-neutral-600);
-    --bookmark-toggle-border-radius: 0.25rem;
-    --bookmark-toggle-clr: var(--clr-neutral-500);
-    --bookmark-toggle-font-weight: var(--fw-medium);
-    --bookmark-toggle-background-clr: transparent;
-    --bookmark-toggle-icon-background-clr: transparent;
+    /* DETAILS TOGGLER */
+    --details-toggler-padding: 0.5em;
+    --details-toggler-border: 1px solid var(--clr-neutral-600);
+    --details-toggler-border-radius: 0.25rem;
+    --details-toggler-clr: var(--clr-neutral-500);
+    --details-toggler-font-weight: var(--fw-medium);
+    --details-toggler-background-clr: transparent;
+    --details-toggler-icon-background-clr: transparent;
 
     /* RATING LABEL */
     --rating-label-padding: 0.5em;
@@ -212,44 +212,44 @@
     background-color: var(--clr-accent-300);
 }
 
-/* BOOKMARK TOGGLE */
-.bookmark__toggle {
+/* DETAILS TOGGLER */
+.details__toggler {
     display: flex;
     align-items: center;
-    gap: calc(var(--bookmark-toggle-padding) + 0.25em);
+    gap: calc(var(--details-toggler-padding) + 0.25em);
     
-    padding-inline-start: calc(var(--bookmark-toggle-padding) + 0.25em);
-    padding-inline-end: calc(var(--bookmark-toggle-padding) + 0.5em);
-    padding-block: var(--bookmark-toggle-padding);
-    border: var(--bookmark-toggle-border);
-    border-radius: var(--bookmark-toggle-border-radius);
+    padding-inline-start: calc(var(--details-toggler-padding) + 0.25em);
+    padding-inline-end: calc(var(--details-toggler-padding) + 0.5em);
+    padding-block: var(--details-toggler-padding);
+    border: var(--details-toggler-border);
+    border-radius: var(--details-toggler-border-radius);
     
-    color: var(--bookmark-toggle-clr);
-    font-weight: var(--bookmark-toggle-font-weight);
-    background-color: var(--bookmark-toggle-background-clr);
+    color: var(--details-toggler-clr);
+    font-weight: var(--details-toggler-font-weight);
+    background-color: var(--details-toggler-background-clr);
 }
 
-.bookmark__toggle__icon {
+.details__toggler__icon {
     inline-size: 1rem;
 }
 
-.bookmark__toggle__icon .target--stroke {
-    stroke: var(--bookmark-toggle-clr);
+.details__toggler__icon .target--stroke {
+    stroke: var(--details-toggler-clr);
 }
 
-.bookmark__toggle__icon .target--fill {
-    fill: var(--bookmark-toggle-icon-background-clr);
+.details__toggler__icon .target--fill {
+    fill: var(--details-toggler-icon-background-clr);
 }
 
 .toggled--on {
-    --bookmark-toggle-clr: var(--clr-neutral-100);
-    --bookmark-toggle-border: 1px solid var(--clr-accent-300);
-    --bookmark-toggle-background-clr: var(--clr-accent-300);
-    --bookmark-toggle-icon-background-clr: var(--clr-neutral-100);
+    --details-toggler-clr: var(--clr-neutral-100);
+    --details-toggler-border: 1px solid var(--clr-accent-300);
+    --details-toggler-background-clr: var(--clr-accent-300);
+    --details-toggler-icon-background-clr: var(--clr-neutral-100);
 }
 
 .toggled--off:hover,
 .toggled--off:focus {
-    --bookmark-toggle-clr: var(--clr-neutral-100);
-    --bookmark-toggle-border: 1px solid var(--clr-accent-300);
+    --details-toggler-clr: var(--clr-neutral-100);
+    --details-toggler-border: 1px solid var(--clr-accent-300);
 }

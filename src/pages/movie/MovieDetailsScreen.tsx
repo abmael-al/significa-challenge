@@ -22,11 +22,11 @@ export const BookmarkToggle = ({ itemId }: BookmarkToggleProps) => {
     return(
         <button
             className={
-                `bookmark__toggle ${ isBookmarked ? 'toggled--on' : 'toggled--off' }`
+                `details__toggler ${ isBookmarked ? 'toggled--on' : 'toggled--off' }`
             }
             onClick={handleOnToggle}
         >
-            <IconHeart className='bookmark__toggle__icon' />
+            <IconHeart className='details__toggler__icon' />
             {isBookmarked ? 'Added' : 'Add to favorites' }
         </button>
     )

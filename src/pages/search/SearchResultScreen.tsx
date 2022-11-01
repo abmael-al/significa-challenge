@@ -23,11 +23,11 @@ export const SearchResultScreen = ({ config, dispatchNumberOfPages }: SearchResu
         isError,
     } = useSearchEntertainmentsByTitle(config);
     
-    const noRequestWasMadeBefore = !search.results && config.query === '';
-
     useEffect(() => {
         dispatchNumberOfPages(search.pages);
     }, [search.pages]);
+
+    const noRequestWasMadeBefore = !search.results && config.query === '';
 
     return (
         <main className="search__result__container">
@@ -59,7 +59,7 @@ export const SearchResultScreen = ({ config, dispatchNumberOfPages }: SearchResu
 
             {isLoading && 
                 <LoadingAnimation 
-                    wrapperClass='search__state__screen' 
+                    wrapperClass='search__state__screen state__screen--loading' 
                 />
             }
 
