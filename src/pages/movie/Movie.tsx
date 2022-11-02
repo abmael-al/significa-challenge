@@ -9,7 +9,7 @@ import {
     EntertainmentNotFound 
 } from '../../components';
 
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link,  } from 'react-router-dom'
 import { useEntertainmentDetails } from '../../hooks';
 
 import './index.css'
@@ -24,8 +24,9 @@ export const Movie = () => {
     } = useEntertainmentDetails<MovieMap>(
         { id: id as string, type: 'movie' }
     );
-    // TODO: improve intellisense for useEntertainmentDetails hook 
-        
+
+    const PREV_PAGE_LINK = window.history.state || window.history.length > 1 ? -1 : '/';
+
     return (
         <>
             <section>
@@ -34,7 +35,8 @@ export const Movie = () => {
                 >
                     <nav className='nav'>
                         <Link 
-                            to='/'
+                            //@ts-ignore
+                            to={PREV_PAGE_LINK}
                             className='nav__back__link'
                         >
                             <IconArrow />
