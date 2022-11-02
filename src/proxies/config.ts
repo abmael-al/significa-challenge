@@ -56,7 +56,7 @@ export interface DetailsRequestConfig<T extends EntertainmentRequestMap> {
     plot?: 'short' | 'full';
 }
 
-type GetType<T> = T extends { Type: string } ? T['Type'] : never;
+type GetType<T> = T extends { Type: Entertainment } ? T['Type'] : never;
 
 export interface SearchConfig {
     query: string;
