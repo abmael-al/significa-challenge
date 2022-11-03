@@ -75,7 +75,7 @@ export const MovieDetailsScreen = ({
                 <ProgressiveLazyPoster 
                     src={Poster}
                     fallbackSrc='/images/poster-fallback.png'
-                    placeholderSrc='/images/poster-placeholder-small.png'
+                    placeholderSrc='/images/poster-placeholder-greater.png'
                     imgClass='details__poster'
                     alt={Title}
                 />

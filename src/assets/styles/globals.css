@@ -8,6 +8,7 @@
     --clr-neutral-700:hsl(206, 21%, 13%);
     --clr-neutral-600:hsl(214, 18%, 25%);
     --clr-neutral-500:hsl(205, 13%, 54%);
+    --clr-neutral-400:hsl(222, 13%, 60%);
     --clr-neutral-200:hsl(200, 10%, 94%);
     --clr-neutral-100:hsl(0, 0%, 100%);
 
@@ -16,6 +17,7 @@
     --clr-accent-300:hsl(0, 100%, 63%);
 
     --clr-transparent-100: hsl(214 18% 25% / 0.2);
+    --clr-transparent-200: hsl(0 0% 0% / 0.5);
 
     /* typography */
     --ff-primary-fallback: sans-serif;
@@ -63,9 +65,6 @@
     --fs-heading-300: var(--fs-900);
     --tracking-heading-300: var(--tracking-300);
     --leading-heading-300: var(--leading-400);
-
-    /* sizes */
-    --gap: 0.5rem;
 }
 
 @media (min-width: 30em) {
@@ -184,17 +183,14 @@ body {
 
 /* setting up app's root */
 [data-app-root] {
+    display: grid;
+    grid-auto-rows: max-content auto;
     min-height: 100vh;
 }
 
 /* --------------- */
 /* UTILITY CLASSES */
 /* --------------- */
-.fill-screen-accordingly {
-    display: grid;
-    grid-auto-rows: max-content auto;
-}
-
 .line__height--body { line-height: var(--leading-body); }
 
 .pointer-events-none { pointer-events: none; }

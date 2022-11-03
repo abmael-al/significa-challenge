@@ -23,9 +23,6 @@ export const ProgressiveLazyPoster = ({
     const [currentSrc, setCurrentSrc] = useState(placeholderSrc);
     const { inView, ref } = useInView({ threshold: 0, triggerOnce: true });
 
-    const whenImgFallback = currentSrc === fallbackSrc ? whenImgFallbackClass : '';
-    const whenImgLoad = currentSrc !== placeholderSrc ? whenImgLoadClass : '';
-
     const setImage = () => {
         const img = new Image();
         img.src = src;
@@ -46,6 +43,9 @@ export const ProgressiveLazyPoster = ({
 
     }, [inView, src]);
     
+    const whenImgFallback = currentSrc === fallbackSrc ? whenImgFallbackClass : '';
+    const whenImgLoad = currentSrc !== placeholderSrc ? whenImgLoadClass : '';
+
     return (
         <img
             ref={ref}

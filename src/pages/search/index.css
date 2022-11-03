@@ -143,6 +143,8 @@
 }
 
 .empty__state__body {
+    --gap: 0.5rem;
+    
     display: grid;
     gap: var(--gap);
 
@@ -228,7 +230,7 @@
 
     .movie__card:has(.mc__poster--fallback) .movie__card__body {
         --body-transition-hover-devices: none;
-        --body-background-hover-devices: hsl(0 0% 0% / 0.5);
+        --body-background-hover-devices: var(--clr-transparent-200);
         
         opacity: 1;
     }

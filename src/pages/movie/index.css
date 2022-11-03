@@ -1,10 +1,10 @@
 :root {
     /* NAV BAR */
-    --back-link-clr: #8B93A6;
+    --back-link-clr: var(--clr-neutral-400);
     
     /* POSTER */
-    --poster-width: 297px;
-    --poster-height: 445px;
+    --poster-width: 200px;
+    --poster-height: 300px;
     --poster-border-radius: 0.5rem;
     --poster-box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
@@ -35,6 +35,27 @@
     --white-space-200: 2rem;
     --white-space-300: 3rem;
     --white-space-400: 4rem;
+}
+
+@media (min-width: 30em) {
+    :root {
+        --poster-width: 225px;
+        --poster-height: 337.5px;
+    }
+}
+
+@media (min-width: 48em) {
+    :root {
+        --poster-width: 250px;
+        --poster-height: 375px;
+    }
+}
+
+@media (min-width: 64em) {
+    :root {
+        --poster-width: 300px;
+        --poster-height: 450px;
+    }
 }
 
 .details__screen__container {
