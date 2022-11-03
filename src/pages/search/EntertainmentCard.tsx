@@ -43,8 +43,8 @@ export const EntertainmentCard = ({
             <div>
                 <ProgressiveLazyPoster 
                     src={Poster}
-                    fallbackSrc='/placeholders/no-poster-placeholder.png'
-                    placeholderSrc='/placeholders/movie-card-poster-placeholder.png'
+                    fallbackSrc='/images/poster-fallback.png'
+                    placeholderSrc='/images/poster-placeholder-small.png'
                     imgClass='movie__card__poster'
                     whenImgLoadClass='mc__poster--loaded'
                     whenImgFallbackClass='mc__poster--fallback'

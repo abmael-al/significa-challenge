@@ -43,7 +43,7 @@ export const SearchResultScreen = ({ config, dispatchNumberOfPages }: SearchResu
                         className="empty__state__illustration"
                     >
                         <img 
-                            src="/illustrations/illustration-empty-state.png" 
+                            src="/images/illustration-empty-state.png" 
                             alt="An illustrantion used to compose an state of empty screen."
                             width='400px'
                             height='200px'
