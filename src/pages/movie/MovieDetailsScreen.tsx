@@ -1,6 +1,7 @@
 import { ENTERTAINMENT_BOOKMARK_KEY } from '../../App';
 import { MovieMap } from '../../proxies';
 
+import { ProgressiveLazyPoster } from '../../components';
 import { ReactComponent as RottenTomatoesLogo } from '../../assets/logos/logo-rotten-tomatoes.svg';
 import { ReactComponent as IMDBLogo } from '../../assets/logos/logo-imdb.svg';
 import { ReactComponent as IconHeart } from '../../assets/icons/icon-heart.svg';
@@ -71,11 +72,12 @@ export const MovieDetailsScreen = ({
     return (
         <main className='details__container'>
             <figure className='details__poster__wrapper'>
-                <img 
-                    className='details__poster'
-                    src={Poster} 
+                <ProgressiveLazyPoster 
+                    src={Poster}
+                    fallbackSrc='/placeholders/no-poster-placeholder.png'
+                    placeholderSrc='/placeholders/movie-card-poster-placeholder.png'
+                    imgClass='details__poster'
                     alt={Title}
-                    loading='lazy'
                 />
             </figure>
 

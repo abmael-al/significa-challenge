@@ -3,7 +3,8 @@
     --back-link-clr: #8B93A6;
     
     /* POSTER */
-    --poster-width: min(18.75rem, 100%);
+    --poster-width: 297px;
+    --poster-height: 445px;
     --poster-border-radius: 0.5rem;
     --poster-box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
@@ -170,8 +171,10 @@
 
 .details__poster {
     inline-size: var(--poster-width);
+    block-size: var(--poster-height);
     box-shadow: var(--poster-box-shadow);
     border-radius: var(--poster-border-radius);
+    object-fit: cover;
 }
 
 /* RATING LABEL */

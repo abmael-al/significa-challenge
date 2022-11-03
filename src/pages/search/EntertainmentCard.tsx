@@ -2,7 +2,7 @@ import { EntertainmentShortMap } from "../../proxies";
 
 import { Link } from "react-router-dom";
 import { ReactComponent as IconHeart } from "../../assets/icons/icon-heart.svg";
-import { ProgressiveLazyPoster } from "./ProgressiveLazyPoster";
+import { ProgressiveLazyPoster } from "../../components";
 
 import { navigateTo } from "../../App";
 
@@ -33,17 +33,21 @@ interface EntertainmentCardProps extends EntertainmentShortMap {
 export const EntertainmentCard = ({
     Poster,
     Title,
-    Year,
     Type,
+    Year,
     imdbID,
     isBookmarked,
 }: EntertainmentCardProps) => {
     return (
         <div className='movie__card'>
             <div>
-                {/* TODO: It would be optimal if i were able to reuse this component throughout the system. */}
                 <ProgressiveLazyPoster 
                     src={Poster}
+                    fallbackSrc='/placeholders/no-poster-placeholder.png'
+                    placeholderSrc='/placeholders/movie-card-poster-placeholder.png'
+                    imgClass='movie__card__poster'
+                    whenImgLoadClass='mc__poster--loaded'
+                    whenImgFallbackClass='mc__poster--fallback'
                     alt={Title}
                 />
             </div>

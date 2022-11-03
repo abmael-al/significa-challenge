@@ -2,21 +2,29 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 
 interface ProgressiveLazyPosterProps {
-    alt: string;
     src: string;
+    fallbackSrc: string;
+    placeholderSrc: string;
+    imgClass?: string;
+    whenImgLoadClass?: string;
+    whenImgFallbackClass?: string;
+    alt: string;
 }
 
-export const ProgressiveLazyPoster = (
-    { alt, src, }: ProgressiveLazyPosterProps 
-) => {
-    const FALLBACK_SRC = '/illustrations/illustration-empty-state.png';
-    const PLACEHOLDER_SRC = '/placeholders/movie-card-poster-placeholder.png';
-    
-    const [currentSrc, setCurrentSrc] = useState(PLACEHOLDER_SRC);
+export const ProgressiveLazyPoster = ({ 
+    src, 
+    fallbackSrc, 
+    placeholderSrc,
+    imgClass, 
+    whenImgLoadClass,
+    whenImgFallbackClass,
+    alt, 
+}: ProgressiveLazyPosterProps ) => {
+    const [currentSrc, setCurrentSrc] = useState(placeholderSrc);
     const { inView, ref } = useInView({ threshold: 0, triggerOnce: true });
 
-    const WHEN_FALLBACK = currentSrc === FALLBACK_SRC ? 'poster--fallback' : '';
-    const WHEN_LOADED = currentSrc === PLACEHOLDER_SRC ? '' : 'poster--loaded';
+    const whenImgFallback = currentSrc === fallbackSrc ? whenImgFallbackClass : '';
+    const whenImgLoad = currentSrc !== placeholderSrc ? whenImgLoadClass : '';
 
     const setImage = () => {
         const img = new Image();
@@ -27,7 +35,7 @@ export const ProgressiveLazyPoster = (
         }
 
         img.onerror = () => {
-            setCurrentSrc(FALLBACK_SRC);
+            setCurrentSrc(fallbackSrc);
         }
     }
 
@@ -42,7 +50,7 @@ export const ProgressiveLazyPoster = (
         <img
             ref={ref}
             className={
-                `movie__card__poster ${WHEN_FALLBACK} ${WHEN_LOADED}` 
+                `${imgClass || ''} ${whenImgFallback || ''} ${whenImgLoad || ''}` 
             }
             src={currentSrc}
             alt={alt}

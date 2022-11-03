@@ -178,16 +178,14 @@
 .movie__card__poster {
     inline-size: var(--movie-card-width);
     block-size: var(--movie-card-height);
-
     object-fit: cover;
 }
 
-.poster--fallback {
+.mc__poster--fallback {
     background-color: var(--clr-neutral-800);
-    object-fit: contain;
 }
 
-.poster--loaded:not(.poster--fallback) {
+.mc__poster--loaded:not(.mc__poster--fallback) {
     background-color: var(--clr-neutral-700);
     animation: var(--poster-loaded-animation);
 }
@@ -228,7 +226,7 @@
         opacity: 1;
     }
 
-    .movie__card:has(.poster--fallback) .movie__card__body {
+    .movie__card:has(.mc__poster--fallback) .movie__card__body {
         --body-transition-hover-devices: none;
         --body-background-hover-devices: hsl(0 0% 0% / 0.5);
         
