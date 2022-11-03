@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 
-import { Search, Movie, NotFound } from './pages';
+import { Search, Movie, PageNotFound } from './pages';
 import { Entertainment } from './proxies';
 import { Header } from './layout';
 import { useLayoutEffect } from 'react';
@@ -35,7 +35,7 @@ export function App() {
           <Route path=':id' element={<Movie />}/>
         </Route>
         
-        <Route path='*' element={<NotFound />} />
+        <Route path='*' element={<PageNotFound />} />
       </Route>
     </Routes>  
   )
