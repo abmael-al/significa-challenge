@@ -7,7 +7,7 @@ import {
 
 import fetch from "../lib/fetch";
 
-export const getEntertainmentDetails = async <T extends EntertainmentRequestMap>(config: DetailsRequestConfig) => {
+export const getEntertainmentDetails = async <T extends EntertainmentRequestMap>(config: DetailsRequestConfig<T>) => {
     const url = getEntertainmentDetailsRequestUrl(config);
     const { data } = await fetch<T>(url);
 
