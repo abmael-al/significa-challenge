@@ -4,7 +4,6 @@ import { ReactComponent as IconArrow } from '../../assets/icons/icon-arrow.svg';
 
 import "./pageNotFound.css";
 
-
 export const PageNotFound = () => {
     return (
         <section>
@@ -14,7 +13,7 @@ export const PageNotFound = () => {
                 <div
                     className='pnf__wrapper'
                 >
-                    <h1 className="pnf__headline">Oops! <span className="pnf__headline__br">We couldn't find that page.</span></h1>
+                    <h1 className="pnf__headline">Oops! We couldn't find that page.</h1>
                     <p className="pnf__supporting__text">Maybe you can find what you need here?</p>
                     <Link
                         to='/'
@@ -23,7 +22,7 @@ export const PageNotFound = () => {
                         <IconArrow 
                             className='pnf__link__icon'
                         />
-                        Take me home
+                        Home
                     </Link>
                 </div>
             </GeneralContainer>
