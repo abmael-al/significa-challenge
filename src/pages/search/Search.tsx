@@ -12,13 +12,13 @@ import { useSearchParams, useLocation } from 'react-router-dom'
 
 import './index.css';
 
-interface PaginationProps {
+interface PaginateProps {
     pageCount: number;
     forcePage: number;
     onPageChange(selectedItem: { selected: number }): void;
 }
 
-const Paginate = ({ pageCount, forcePage, onPageChange }: PaginationProps) => {
+const Paginate = ({ pageCount, forcePage, onPageChange }: PaginateProps) => {
     const location = useLocation();
 
     const buildHref = (pageIndex: number, pageCount: number) => {
@@ -103,7 +103,7 @@ export const Search = () => {
     return (
         <section>
             <GeneralContainer
-                wrapperClass='search__screen__container'
+                className='search__screen__container'
             >
                 <form 
                     className='search__bar'

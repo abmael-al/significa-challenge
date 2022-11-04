@@ -28,7 +28,7 @@ export const Movie = () => {
         <>
             <section>
                 <GeneralContainer 
-                    wrapperClass='details__screen__container'
+                    className='details__screen__container'
                 >
                     <nav className='nav'>
                         <Link 

@@ -7,21 +7,15 @@ import "./pageNotFound.css";
 export const PageNotFound = () => {
     return (
         <section>
-            <GeneralContainer
-                wrapperClass="pnf__container"
-            >
-                <div
-                    className='pnf__wrapper'
-                >
+            <GeneralContainer className="pnf__container">
+                <div className='pnf__wrapper' >
                     <h1 className="pnf__headline">Oops! We couldn't find that page.</h1>
                     <p className="pnf__supporting__text">Maybe you can find what you need here?</p>
                     <Link
                         to='/'
                         className='pnf__link'
                     >
-                        <IconArrow 
-                            className='pnf__link__icon'
-                        />
+                        <IconArrow className='pnf__link__icon' />
                         Home
                     </Link>
                 </div>
