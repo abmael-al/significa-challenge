@@ -1,11 +1,9 @@
 import { SearchConfig } from "../../proxies";
 
 import { EntertainmentCardFeatures } from "./EntertainmentCardFeatures";
-import { 
-    LoadingAnimation, 
-    NothingWasFound, 
-    SomethingWentWrong 
-} from "../../components";
+import { NothingWasFound } from "./NothingWasFound";
+import { SomethingWentWrong } from "../../layout";
+import { LoadingAnimation } from "../../components";
 
 import { useSearchEntertainmentsByTitle } from "../../hooks";
 import { useEffect } from "react";

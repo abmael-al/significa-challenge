@@ -1,5 +1,4 @@
 import { ReactComponent as NoSearchResultIcon } from '../../assets/icons/no-search-result.svg';
-import './nothingWasFound.css';
 
 interface NothingWasFoundProps {
     wrapperClass: string;

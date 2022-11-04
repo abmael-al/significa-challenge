@@ -1,7 +1,5 @@
 import { ReactComponent as Error404Icon } from "../../assets/icons/error-404.svg";
 
-import './entertainmentNotFound.css';
-
 interface EntertainmentNotFoundProps {
     wrapperClass?: string;
 }

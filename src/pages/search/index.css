@@ -368,3 +368,51 @@
 .paginate__label .target--fill {
     fill: var(--pg-link-clr);
 }
+
+/* NOTHING WAS FOUND */
+.nwf__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    
+    font-size: var(--fs-200);
+}
+
+.nwf__illustration {
+    inline-size: 3.5rem;
+}
+
+.nwf__illustration .target--fill {
+    fill: var(--clr-accent-300);
+}
+
+.nwf__body {
+    text-align: center;
+    max-inline-size: 34ch;
+}
+
+.nwf__title {
+    margin-block-end: 0.5rem;
+
+    font-size: var(--fs-heading-100);
+    font-family: var(--ff-heading-100);
+    font-weight: var(--fw-heading-100);
+    letter-spacing: var(--tracking-heading-100);
+    line-height: var(--leading-heading-100);
+    color: var(--clr-neutral-100);
+}
+
+.nwf__supporting__text {
+    line-height: var(--leading-body);
+}
+
+@media (min-width: 48em) {
+    .nwf__container {
+        font-size: var(--fs-body);
+    }
+
+    .nwf__illustration {
+        inline-size: 4rem;
+    }
+}

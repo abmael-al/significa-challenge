@@ -1,15 +1,12 @@
 import { MovieMap } from '../../proxies';
 
-import { MovieDetailsScreen } from './MovieDetailsScreen';
 import { ReactComponent as IconArrow } from '../../assets/icons/icon-arrow.svg';
-import { 
-    GeneralContainer, 
-    LoadingAnimation, 
-    SomethingWentWrong,
-    EntertainmentNotFound 
-} from '../../components';
+import { MovieDetailsScreen } from './MovieDetailsScreen';
+import { EntertainmentNotFound } from './EntertainmentNotFound';
+import { SomethingWentWrong } from '../../layout';
+import { GeneralContainer, LoadingAnimation } from '../../components';
 
-import { useParams, Link,  } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { useEntertainmentDetails } from '../../hooks';
 
 import './index.css'
