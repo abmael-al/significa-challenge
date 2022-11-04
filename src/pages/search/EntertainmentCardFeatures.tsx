@@ -6,10 +6,10 @@ import { EntertainmentCard } from "./EntertainmentCard";
 import { useBookmark } from "../../hooks";
 
 interface EntertainmentCardFeaturesProps {
-    content: EntertainmentShortMap[];
+    toWrap: EntertainmentShortMap[];
 }
 
-export const EntertainmentCardFeatures = ({ content }: EntertainmentCardFeaturesProps) => {
+export const EntertainmentCardFeatures = ({ toWrap }: EntertainmentCardFeaturesProps) => {
     const bookmark = useBookmark(ENTERTAINMENT_BOOKMARK_KEY);
 
     const handleOnToggleInBookmark = ({ target }: React.MouseEvent) => {
@@ -27,11 +27,11 @@ export const EntertainmentCardFeatures = ({ content }: EntertainmentCardFeatures
             className='cards__container'
             onClick={handleOnToggleInBookmark}
         >
-            {content.map(ent => 
+            {toWrap.map(ent => 
                 <EntertainmentCard
+                    { ...ent }
                     key={ent.imdbID}
                     isBookmarked={bookmark.includes(ent.imdbID)}
-                    { ...ent }
                 />    
             )}
         </div>

@@ -24,8 +24,9 @@ const Paginate = ({ pageCount, forcePage, onPageChange }: PaginateProps) => {
     const buildHref = (pageIndex: number, pageCount: number) => {
         const _FLAG = /page=[0-9]+/;
         const _replaceValue = `page=${pageIndex}`;
+        const _shouldAddHref = pageIndex >= 1 && pageIndex <= pageCount;        
         
-        return pageIndex >= 1 && pageIndex <= pageCount 
+        return _shouldAddHref
             ? `/${location.search.replace(_FLAG, _replaceValue)}`
             : '#'
     }

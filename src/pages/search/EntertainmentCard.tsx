@@ -54,7 +54,10 @@ export const EntertainmentCard = ({
 
             <div>
                 {isBookmarked && 
-                    <BookmarkToggle id={imdbID} isBookmarked={true} />
+                    <BookmarkToggle 
+                        id={imdbID} 
+                        isBookmarked={true} 
+                    />
                 }
 
                 <div className='movie__card__body'>
@@ -64,7 +67,10 @@ export const EntertainmentCard = ({
                     />
 
                     {!isBookmarked && 
-                        <BookmarkToggle id={imdbID} isBookmarked={false} />
+                        <BookmarkToggle 
+                            id={imdbID} 
+                            isBookmarked={false} 
+                        />
                     }
 
                     <div className='movie__card__text__content pointer-events-none'>

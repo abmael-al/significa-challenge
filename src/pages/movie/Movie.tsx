@@ -2,7 +2,7 @@ import { MovieMap } from '../../proxies';
 
 import { ReactComponent as IconArrow } from '../../assets/icons/icon-arrow.svg';
 import { MovieDetailsScreen } from './MovieDetailsScreen';
-import { EntertainmentNotFound } from './EntertainmentNotFound';
+import { MovieNotFound } from './MovieNotFound';
 import { SomethingWentWrong } from '../../layout';
 import { GeneralContainer, LoadingAnimation } from '../../components';
 
@@ -12,17 +12,17 @@ import { useEntertainmentDetails } from '../../hooks';
 import './index.css'
 
 export const Movie = () => {
-    const { id } = useParams();
+    const { movie_id } = useParams();
     const { 
         details, 
         isNotFound, 
         isLoading, 
         isError, 
     } = useEntertainmentDetails<MovieMap>(
-        { id: id as string, type: 'movie' }
+        { id: movie_id as string, type: 'movie' }
     );
 
-    const PREV_PAGE_LINK = window.history.state || window.history.length > 1 ? -1 : '/';
+    const prevPageLink = window.history.state || window.history.length > 1 ? -1 : '/';
 
     return (
         <>
@@ -33,7 +33,7 @@ export const Movie = () => {
                     <nav className='nav'>
                         <Link 
                             //@ts-ignore
-                            to={PREV_PAGE_LINK}
+                            to={prevPageLink}
                             className='nav__back__link'
                         >
                             <IconArrow />
@@ -44,14 +44,14 @@ export const Movie = () => {
                         <MovieDetailsScreen { ...details } />
                     }
 
-                    {isLoading && 
+                    {isLoading &&
                         <LoadingAnimation 
                             wrapperClass='details__state__screen' 
                         />
                     }
 
                     {isNotFound &&
-                        <EntertainmentNotFound 
+                        <MovieNotFound 
                             wrapperClass='details__state__screen'
                         />
                     }

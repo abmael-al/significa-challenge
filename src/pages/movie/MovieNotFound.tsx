@@ -1,13 +1,13 @@
 import { ReactComponent as Error404Icon } from "../../assets/icons/error-404.svg";
 
-interface EntertainmentNotFoundProps {
+interface MovieNotFoundProps {
     wrapperClass?: string;
 }
 
-export const EntertainmentNotFound = ({ wrapperClass }: EntertainmentNotFoundProps) => {
+export const MovieNotFound = ({ wrapperClass }: MovieNotFoundProps) => {
     return (
         <div className={`enf__container ${wrapperClass}`}>
-            <div>
+            <div> 
                 <Error404Icon className='enf__illustration' />
             </div>
             <div className='enf__body'>
