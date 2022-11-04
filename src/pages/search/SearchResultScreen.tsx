@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 interface SearchResultScreenProps {
     config: SearchConfig;
-    dispatchNumberOfPages(n: number): void;
+    dispatchNumberOfPages?(n: number): void;
 }
 
 export const SearchResultScreen = ({ config, dispatchNumberOfPages }: SearchResultScreenProps) => {
@@ -22,7 +22,7 @@ export const SearchResultScreen = ({ config, dispatchNumberOfPages }: SearchResu
     } = useSearchEntertainmentsByTitle(config);
     
     useEffect(() => {
-        dispatchNumberOfPages(search.pages);
+        dispatchNumberOfPages?.(search.pages);
     }, [search.pages]);
 
     const noRequestWasMadeBefore = !search.results && config.query === '';
