@@ -1,4 +1,4 @@
-import { useLocalStorage } from "./";
+import { useLocalStorage } from 'usehooks-ts'
 
 export function useBookmark(key: string) {
     const [bookmarkItems, setBookmarkItems] = useLocalStorage<string[]>(key, []);
