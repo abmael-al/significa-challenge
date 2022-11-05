@@ -126,6 +126,7 @@
 }
 
 .details__headline {
+    max-inline-size: 18ch;
     margin-block-end: var(--white-space-300);
     
     display: -webkit-box;
