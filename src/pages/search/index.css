@@ -322,7 +322,7 @@
 /* PAGINATE */
 .paginate__container {
     block-size: var(--pg-link-height);
-    margin-block-end: 5rem;
+    margin-block-end: 2rem;
 }
 
 .paginate {
