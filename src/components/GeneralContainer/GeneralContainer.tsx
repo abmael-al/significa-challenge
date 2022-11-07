@@ -1,4 +1,4 @@
-import './generalContainer.css';
+import './GeneralContainer.css';
 
 interface GeneralContainerProps extends React.HTMLAttributes<HTMLDivElement> {}
 
